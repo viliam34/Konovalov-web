@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    overflow: hidden;
+    background-color: #f5ae1f;
+    padding: 20px 10px;
+}
+
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.grid-wrapper {
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    z-index: 1;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.main-grid {
+    background-color: rgb(255, 255, 255);
+    width: 60vw;
+    height: fit-content;
+    margin-left: 20%;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.tile-text {
+    font-family: verdana, sans-serif;
+    width: 30vw;
+    height: 38vh;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.tile-text>p {
+    color: rgb(0, 0, 0);
+    padding: 2vh;
+}
+
+.tile-img {
+    width: 100%;
+    height: 38vh;
+    background-color: rgb(255, 255, 255);
+}
+
+.footer {
+    margin-top: 2vh;
+    background-color: rgb(25, 25, 25);
+    height: 50vh;
+    display: grid;
+    color: white;
+    font-family: verdana, sans-serif;
+    grid-template-columns: auto auto auto auto;
+}
+
+.footer>div {
+    text-align: center;
+    margin-top: 2vh;
+    font-size: 3vh;
+}
+
+.services-grid {
+    display: grid;
+    width: 70vw;
+
+    grid-template-columns: auto auto auto auto;
+    gap: 1vh;
+    margin-left: 15vw;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+}
+
+.service-tab {
+    background-color: rgb(243, 243, 243);
+    height: 50vh;
+    border-radius: 1vh;
+    max-width: 35vh;
+    font-size: 1.5vh;
+    padding: 3vh;
+}
+
+#services-paragraph {
+    font-size: 2em;
+    font-weight: normal;
+    font-style: normal;
+    font-family: verdana, sans-serif;
+}
+
+.service-icon-wrapper {
+    padding-top: 2vh;
+}
+
+.service-tab:hover {
+    background-color: rgb(165, 165, 165);
+    height: 50vh;
+    border-radius: 1vh;
+}
+
+.footer-content-wrapper {
+    height: 30vh;
+    width: 40vh;
+    margin-left: 3vh;
+}
+
+.footer-content-wrapper>p {
+    font-size: 2vh;
+}
