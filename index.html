@@ -32,34 +32,313 @@
             background-size: cover;
             background-image: url("house-colored.jpeg");
             min-height: 100%;
+            position: relative;
+        }
+
+        /* Geometric overlay for hero section */
+        .bgimg-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 65%;
+            height: 100%;
+            background: linear-gradient(135deg, #E6D2BE 0%, #D9C3A9 25%, #C9B496 75%, #B8A082 100%);
+            clip-path: polygon(0 0, 90% 0, 75% 100%, 0 100%);
+            z-index: 1;
+        }
+
+        /* Ensure text appears above overlay */
+        .bgimg-1 .w3-display-left {
+            position: absolute;
+            top: 50%;
+            left: 48px;
+            transform: translateY(-50%);
+            z-index: 100;
+            color: white !important;
+            max-width: 500px;
+        }
+
+        /* Ensure button styling */
+        .bgimg-1 .w3-display-left .w3-button {
+            z-index: 101;
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* Hero text styling */
+        .hero-text {
+            position: relative;
+            z-index: 100;
+            color: white !important;
         }
 
         .w3-bar .w3-button {
+            padding: 42px 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Custom Navbar Styles */
+        .custom-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 116px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo-container {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo {
+            height: 100px;
+            width: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-right: 16px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            padding: 42px 16px;
+            display: flex;
+            align-items: center;
+            height: 116px;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
             padding: 16px;
+            margin-right: 16px;
+        }
+
+        .mobile-menu i {
+            font-size: 24px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Override W3.CSS default padding for logo */
+        #myNavbar .w3-bar-item:first-child {
+            padding: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        /* Override W3.CSS container padding */
+        .w3-top {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        /* Override W3.CSS bar padding */
+        .w3-bar {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .w3-right {
+            display: flex;
+            align-items: center;
+            margin-right: 16px;
+        }
+        
+        .w3-bar-item {
+            line-height: 1.2;
+        }
+
+        /* Consistent sizing for project gallery images */
+        #work .w3-col img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px;
+        }
+
+        /* Contact section styling */
+        .contact-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .contact-details i {
+            margin-right: 15px;
+            color: #B8A082;
+            width: 35px;
+            font-size: 2em;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 25px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(135deg, #B8A082 0%, #A68F73 100%);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .contact-info {
+                padding-right: 0;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-        <div class="w3-bar w3-white w3-card" id="myNavbar">
-            <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
-            <!-- Right-sided navbar links -->
-            <div class="w3-right w3-hide-small">
-                <a href="#about" class="w3-bar-item w3-button">O nás</a>
-                <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Služby</a>
-                <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> Projekty</a>
-                <a href="#pricing" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> Cenník</a>
-                <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> Kontakt</a>
+    <!-- Custom Navbar -->
+    <div class="custom-navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="#home">
+                    <img src="archvizual_logo.svg" alt="ARCHVIZUAL.STUDIO" class="logo">
+                </a>
             </div>
-            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-
-            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-                onclick="w3_open()">
+            <nav class="nav-links">
+                <a href="#about">O nás</a>
+                <a href="#team"><i class="fa fa-user"></i> Služby</a>
+                <a href="#work"><i class="fa fa-th"></i> Projekty</a>
+                <a href="#pricing"><i class="fa fa-usd"></i> Cenník</a>
+                <a href="#contact"><i class="fa fa-envelope"></i> Kontakt</a>
+            </nav>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
                 <i class="fa fa-bars"></i>
-            </a>
+            </div>
         </div>
     </div>
 
@@ -77,66 +356,16 @@
 
     <!-- Header with full-height image -->
     <header class="bgimg-1 w3-display-container" id="home">
-        <div class="w3-display-left w3-text-white" style="padding:48px">
-            <span class="w3-jumbo w3-hide-small">Poďme budovať!</span><br>
-            <span class="w3-xxlarge w3-hide-large w3-hide-medium">Pusťte sa s nami do Vašej vysnívanej stavby</span><br>
-            <span class="w3-large">Pusťte sa s nami do Vašej vysnívanej stavby</span>
+        <div class="w3-display-left w3-text-white hero-content" style="position: absolute; top: 50%; left: 48px; transform: translateY(-50%); z-index: 100; color: white !important; max-width: 500px;">
+            <span class="w3-jumbo w3-hide-small hero-text" style="color: white !important; z-index: 100;">Poďme budovať!</span><br>
+            <span class="w3-xxlarge w3-hide-large w3-hide-medium hero-text" style="color: white !important; z-index: 100;">Pusťte sa s nami do Vašej vysnívanej stavby</span><br>
+            <span class="w3-large hero-text" style="color: white !important; z-index: 100;">Pusťte sa s nami do Vašej vysnívanej stavby</span>
             <p><a href="#about"
-                    class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn
-                    more and start today</a></p>
+                    class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" style="z-index: 101; position: relative; display: inline-block; margin-top: 20px;"> Naše služby
+                    </a></p>
         </div>
 
     </header>
-
-    <!-- About Section -->
-    <div class="w3-container" style="padding:128px 16px ;" id="about">
-        <h3 class="w3-center">O nás</h3>
-        <p class="w3-center w3-large">Key features of our company</p>
-        <div class="w3-row-padding w3-center" style="margin-top:64px">
-            <div class="w3-quarter">
-                <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center;"
-                    style="color:rgba(241, 166, 35, 0.87);"></i>
-                <p class="w3-large">Individuálny prístup</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore.</p>
-            </div>
-            <div class="w3-quarter">
-                <i class="fa fa-heart w3-margin-bottom w3-jumbo" style="color:rgba(241, 166, 35, 0.87);"></i>
-                <p class="w3-large">Dlhoročné skúsenosti</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore.</p>
-            </div>
-            <div class="w3-quarter">
-                <i class="fa fa-diamond w3-margin-bottom w3-jumbo" style="color:rgba(241, 166, 35, 0.87);"></i>
-                <p class="w3-large">Neznam</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore.</p>
-            </div>
-            <div class="w3-quarter">
-                <i class="fa fa-cog w3-margin-bottom w3-jumbo" style="color:rgba(241, 166, 35, 0.87);"></i>
-                <p class="w3-large">24/7 asistencia</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Promo Section - "We know design" -->
-    <div class="w3-container w3-light-grey" style="padding:128px 16px">
-        <div class="w3-row-padding">
-            <div class="w3-col m6">
-                <h3>Komplexná asistencia od základov cez realizáciu až po správu</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut
-                    labore et dolore.</p>
-                <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i>Pozrite si naše práce</a></p>
-            </div>
-            <div class="w3-col m6">
-                <img class="w3-image w3-round-large" src="https://www.w3schools.com/w3images/phone_buildings.jpg"
-                    alt="Buildings" width="700" height="394" style="border:  10px solid rgba(241, 166, 35, 0.87);">
-            </div>
-        </div>
-    </div>
-
     <!-- Team Section -->
     <div class="w3-container" style="padding:128px 16px" id="team">
         <h3 class="w3-center">Služby</h3>
@@ -147,7 +376,7 @@
 
                     <div class="w3-container" style="text-align: center;">
                         <i class="	fa fa-edit"
-                            style="font-size:8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
+                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
                         <h3>Realizácia projektu</h3>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
                             elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
@@ -165,7 +394,7 @@
 
                     <div class="w3-container" style="text-align: center;">
                         <i class="fa fa-envelope-o"
-                            style="font-size:8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
+                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
                         <h3>Stavebný dozor</h3>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
                             elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
@@ -182,7 +411,7 @@
                 <div class="w3-card">
 
                     <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-fax" style="font-size:8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
+                        <i class="fa fa-fax" style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
                         <h3>Správa nehnuteľností</h3>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
                             elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
@@ -200,7 +429,7 @@
 
                     <div class="w3-container" style="text-align: center;">
                         <i class="fa fa-folder-open-o"
-                            style="font-size:8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
+                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
                         <h3>Asistenčné služby</h3>
                         <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
                             elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
@@ -218,14 +447,9 @@
 
                     <div class="w3-container" style="text-align: center;">
                         <i class="fa fa-caret-square-o-right"
-                            style="font-size:8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
-                        <h3>Realizácia projektu</h3>
-                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.</p>
+                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
+                        <h3>Architektonické návrhy</h3>
+                        <p>Tvoríme moderné a funkčné architektonické riešenia pre rodinné domy, bytové komplexy a komerčné objekty. Naše návrhy spájajú estetiku s praktickosťou a rešpektujú individuálne potreby klientov.</p>
                         <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
                                 Contact</button></p>
                     </div>
@@ -236,14 +460,9 @@
 
                     <div class="w3-container" style="text-align: center;">
                         <i class="fa fa-cubes"
-                            style="font-size:8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
-                        <h3>Realizácia projektu</h3>
-                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.</p>
+                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
+                        <h3>Konzultačné služby</h3>
+                        <p>Poskytujeme odborné poradenstvo v oblasti stavebníctva, projektovania a územného plánovania. Pomáhame klientom orientovať sa v legislatívnych požiadavkách a technických normách.</p>
                         <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
                                 Contact</button></p>
                     </div>
@@ -254,14 +473,9 @@
 
                     <div class="w3-container" style="text-align: center;">
                         <i class="fa fa-desktop"
-                            style="font-size: 8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
-                        <h3>Realizácia projektu</h3>
-                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.</p>
+                            style="font-size: 8vh;color:#B8A082;margin-top: 1vh;"></i>
+                        <h3>3D vizualizácie</h3>
+                        <p>Vytvárame realistické 3D vizualizácie projektov, ktoré umožňují klientom vidieť finálny výsledok už pred začiatkom stavby. Špecializujeme sa na exteriérové a interiérové vizualizácie.</p>
                         <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
                                 Contact</button></p>
                     </div>
@@ -271,15 +485,10 @@
                 <div class="w3-card">
 
                     <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-caret-square-o-right"
-                            style="font-size:8vh;color:rgba(241, 166, 35, 0.87);margin-top: 1vh;"></i>
-                        <h3>Realizácia projektu</h3>
-                        <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales
-                            pellentesque
-                            elementum.</p>
+                        <i class="fa fa-leaf"
+                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
+                        <h3>Energetické audity</h3>
+                        <p>Vykonávame energetické audity budov a navrhneme opatrenia na zníženie energetickej náročnosti. Pomáhame dosiahnuť lepšiu energetickú efektívnosť a úspory na prevádzkových nákladoch.</p>
                         <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
                                 Contact</button></p>
                     </div>
@@ -289,7 +498,7 @@
         </div>
 
         <!-- Promo Section "Statistics" -->
-        <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64" style="background-color: chocolate;">
+        <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64" style="background: linear-gradient(135deg, #E6D2BE 0%, #D9C3A9 25%, #C9B496 75%, #B8A082 100%);">
             <div class="w3-quarter">
                 <span class="w3-xxlarge">14+</span>
                 <br>Zmluvných stavebných partnerov
@@ -315,39 +524,39 @@
 
             <div class="w3-row-padding" style="margin-top:64px">
                 <div class="w3-col l3 m6">
-                    <img src="chata-1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="A microphone">
+                    <img src="01 - rodinný dom Trebišov.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Rodinný dom Trebišov" title="Rodinný dom Trebišov">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="chata-2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="A phone">
+                    <img src="02 - rekreačná chata Košice.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Rekreačná chata Košice" title="Rekreačná chata Košice">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="chata-3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="A drone">
+                    <img src="03 - dvojdom Bratislava.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Dvojdom Bratislava" title="Dvojdom Bratislava">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="chata-4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="Soundbox">
+                    <img src="05 - rodinný dom Humenné.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Rodinný dom Humenné" title="Rodinný dom Humenné">
                 </div>
             </div>
 
             <div class="w3-row-padding w3-section">
                 <div class="w3-col l3 m6">
-                    <img src="chata-5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="A tablet">
+                    <img src="08 - vidiecky dom Madarsko.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Vidiecky dom Maďarsko" title="Vidiecky dom Maďarsko">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="chata-6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="A camera">
+                    <img src="11-hotel s polyfunkciou.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Hotel s polyfunkciou" title="Hotel s polyfunkciou">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="chata-7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="A typewriter">
+                    <img src="12-rodinný dom Chrastné.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Rodinný dom Chrastné" title="Rodinný dom Chrastné">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="chata-8.jpeg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
-                        alt="A tableturner">
+                    <img src="15 interiér rodinný dom Prešov.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                        alt="Interiér rodinný dom Prešov" title="Interiér rodinný dom Prešov">
                 </div>
             </div>
         </div>
@@ -363,7 +572,7 @@
         </div>
 
         <!-- Pricing Section -->
-        <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
+        <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px; background: linear-gradient(135deg, #E6D2BE 0%, #D9C3A9 25%, #C9B496 75%, #B8A082 100%);" id="pricing">
             <h2>Potrebujete dlhodobú asistenciu s rozsiahlejšími projektami?</h2>
             <h3>Radi Vám poskytneme dlhodobý stavebný dozor</h3>
             <p class="w3-large">Vyberte si úvodnú obhliadku a konzultáciu</p>
@@ -421,44 +630,58 @@
 
         <!-- Contact Section -->
         <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
-            <h3 class="w3-center">Kontakt</h3>
-            <p class="w3-center w3-large">Ozvite sa nám, radi Vám pomôžeme :)</p>
-            <div style="margin-top:48px">
-                <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Sobrance, Koniec sveta</p>
-                <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +99 999 99</p>
-                <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: slotova_jednotka@gmail.com
-                </p>
-                <br>
-                <form action="/action_page.php" target="_blank">
-                    <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Vaše meno"></p>
-                    <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-                    <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Predmet"></p>
-                    <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Text správy">
-                    </p>
-                    <p>
-                        <button class="w3-button w3-black" type="submit">
-                            <i class="fa fa-paper-plane"></i> Odoslať
-                        </button>
-                    </p>
-                </form>
-                <!-- Image of location/map -->
-                <img src="https://www.w3schools.com/w3images/map.jpg" class="w3-image w3-greyscale"
-                    style="width:100%;margin-top:48px">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Kontaktujte nás</h3>
+                    <p>Prednosťou našej spoločnosti je profesionalita a skúsenosť nadobudnuté z projektovania a riadenia stavieb. Postaráme sa najlepšie o čo najrýchlejšie a najefektívnejšie riešenie Vašej zákazky. Samozrejmosťou je osobný prístup a vysoké pracovné nasadenie.</p>
+                    
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <div>
+                                Letná 42,<br>
+                                040 01 Košice<br>
+                                Slovenská republika
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <span>archvizual.studio@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <span>+421910252500</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-clock-o"></i>
+                            <span>otvr. hod. 8:00 – 16:30</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="contact-form">
+                    <form action="/action_page.php" target="_blank">
+                        <div class="form-group">
+                            <label for="name">Vaše meno</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Váš email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Predmet</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Vaša správa (voliteľný)</label>
+                            <textarea id="message" name="message"></textarea>
+                        </div>
+                        <button type="submit">Odoslať</button>
+                    </form>
+                </div>
             </div>
         </div>
-
-        <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
-        <footer class="w3-center w3-black w3-padding-64">
-            <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-            <div class="w3-xlarge w3-section">
-                <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                <i class="fa fa-instagram w3-hover-opacity"></i>
-                <i class="fa fa-snapchat w3-hover-opacity"></i>
-                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-                <i class="fa fa-twitter w3-hover-opacity"></i>
-                <i class="fa fa-linkedin w3-hover-opacity"></i>
-            </div>
-        </footer>
 
         <script>
             // Modal Image Gallery
@@ -469,6 +692,12 @@
                 captionText.innerHTML = element.alt;
             }
 
+
+            // Mobile menu toggle
+            function toggleMobileMenu() {
+                // Add mobile menu functionality if needed
+                console.log('Mobile menu clicked');
+            }
 
             // Toggle between showing and hiding the sidebar when clicking the menu icon
             var mySidebar = document.getElementById("mySidebar");
