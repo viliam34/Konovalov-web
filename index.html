@@ -80,26 +80,35 @@
             align-items: center;
         }
 
-        /* Custom Navbar Styles */
+        /* Custom Navbar Styles - Modern Design */
         .custom-navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
             z-index: 1000;
             padding: 0;
             margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .custom-navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
         }
 
         .navbar-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 116px;
-            padding: 0;
-            margin: 0;
+            height: 80px;
+            padding: 0 40px;
+            margin: 0 auto;
+            max-width: 1400px;
         }
 
         .logo-container {
@@ -118,57 +127,113 @@
         }
 
         .logo {
-            height: 100px;
+            height: 60px;
             width: auto;
             margin: 0;
             padding: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 0;
-            margin-right: 16px;
+            gap: 8px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
-            padding: 42px 16px;
+            color: #444;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
-            height: 116px;
-            box-sizing: border-box;
-            transition: background-color 0.3s;
+            font-size: 0.95em;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
         }
 
         .nav-links a:hover {
-            background-color: #f1f1f1;
+            color: #B8A082;
+            background: rgba(184, 160, 130, 0.08);
+        }
+
+        .nav-links a:hover::after {
+            width: 60%;
         }
 
         .nav-links a i {
             margin-right: 8px;
+            font-size: 1em;
+        }
+
+        /* CTA Button in navbar */
+        .nav-links a.nav-cta {
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            color: white;
+            border-radius: 25px;
+            padding: 12px 24px;
+            margin-left: 10px;
+            box-shadow: 0 4px 15px rgba(184, 160, 130, 0.3);
+        }
+
+        .nav-links a.nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 160, 130, 0.4);
+            background: linear-gradient(135deg, #D4C4A8 0%, #C9B496 100%);
+        }
+
+        .nav-links a.nav-cta::after {
+            display: none;
         }
 
         .mobile-menu {
             display: none;
             cursor: pointer;
-            padding: 16px;
-            margin-right: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-menu:hover {
+            background: rgba(184, 160, 130, 0.1);
         }
 
         .mobile-menu i {
             font-size: 24px;
+            color: #444;
         }
 
         /* Mobile responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .nav-links {
                 display: none;
             }
             
             .mobile-menu {
                 display: block;
+            }
+            
+            .navbar-container {
+                padding: 0 20px;
             }
         }
 
@@ -198,6 +263,166 @@
         
         .w3-bar-item {
             line-height: 1.2;
+        }
+
+        /* Modern Services Section Styles */
+        .services-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+        }
+
+        .services-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .services-header h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .services-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            border-radius: 3px;
+        }
+
+        .services-header p {
+            color: #666;
+            font-size: 1.15em;
+            line-height: 1.7;
+            margin-top: 25px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, rgba(201, 180, 150, 0.15) 0%, rgba(184, 160, 130, 0.15) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon-wrapper {
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            transform: scale(1.1);
+        }
+
+        .service-icon-wrapper i {
+            font-size: 32px;
+            color: #B8A082;
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover .service-icon-wrapper i {
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-card .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: #B8A082;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .service-card .service-link i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-link {
+            color: #9a8567;
+        }
+
+        .service-card:hover .service-link i {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .services-header h2 {
+                font-size: 2em;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+            }
+            
+            .service-card {
+                padding: 30px 25px;
+            }
         }
 
         /* Consistent sizing for project gallery images */
@@ -310,11 +535,268 @@
             .contact-container {
                 flex-direction: column;
                 gap: 40px;
+                padding: 0 10px;
             }
             
             .contact-info {
                 padding-right: 0;
             }
+            
+            .contact-info h3 {
+                font-size: 1.8em;
+            }
+            
+            .contact-form {
+                padding: 25px 20px;
+            }
+        }
+
+        /* =====================================================
+           COMPREHENSIVE MOBILE STYLES
+           ===================================================== */
+        
+        /* Mobile Hero Section */
+        @media (max-width: 768px) {
+            .bgimg-1 {
+                min-height: 100vh;
+            }
+            
+            .bgimg-1::before {
+                width: 100%;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+            
+            .bgimg-1 .w3-display-left {
+                left: 20px;
+                right: 20px;
+                max-width: calc(100% - 40px);
+                text-align: center;
+            }
+            
+            .bgimg-1 .w3-jumbo {
+                font-size: 2.2em !important;
+            }
+            
+            .bgimg-1 .w3-large {
+                font-size: 1em !important;
+                line-height: 1.6;
+            }
+            
+            .bgimg-1 .w3-button {
+                padding: 12px 24px !important;
+                font-size: 0.95em !important;
+            }
+        }
+        
+        /* Mobile Navbar adjustments */
+        @media (max-width: 768px) {
+            .navbar-container {
+                height: 70px;
+                padding: 0 15px;
+            }
+            
+            .logo {
+                height: 45px;
+            }
+        }
+        
+        /* Mobile Statistics Section */
+        @media (max-width: 768px) {
+            .w3-quarter {
+                width: 50% !important;
+                float: left;
+                padding: 20px 10px;
+                box-sizing: border-box;
+            }
+            
+            .w3-quarter .w3-xxlarge {
+                font-size: 1.8em !important;
+            }
+            
+            .w3-container.w3-row.w3-center.w3-dark-grey {
+                padding: 40px 10px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .w3-quarter {
+                width: 100% !important;
+                padding: 15px 20px;
+            }
+        }
+        
+        /* Mobile Projects Section */
+        @media (max-width: 768px) {
+            #work {
+                padding: 60px 16px !important;
+            }
+            
+            #work h3 {
+                font-size: 1.8em;
+            }
+            
+            #work .w3-col {
+                width: 50% !important;
+                padding: 5px;
+            }
+            
+            #work .w3-col img {
+                height: 150px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+            }
+            
+            #loadMoreBtn {
+                padding: 12px 30px !important;
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #work .w3-col {
+                width: 100% !important;
+            }
+            
+            #work .w3-col img {
+                height: 200px;
+            }
+        }
+        
+        /* Mobile Contact Section */
+        @media (max-width: 768px) {
+            #contact {
+                padding: 60px 16px !important;
+            }
+            
+            .contact-details li {
+                font-size: 0.9em;
+            }
+            
+            .contact-details i {
+                font-size: 1.5em;
+                width: 30px;
+            }
+            
+            .contact-form input,
+            .contact-form textarea {
+                padding: 12px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .contact-form button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+        
+        /* Mobile Services Section improvements */
+        @media (max-width: 768px) {
+            .services-section {
+                padding: 60px 15px;
+            }
+            
+            .services-header {
+                margin-bottom: 40px;
+            }
+            
+            .services-header h2 {
+                font-size: 1.8em;
+            }
+            
+            .services-header p {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            
+            .service-card {
+                margin-bottom: 20px;
+            }
+            
+            .service-icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .service-icon-wrapper i {
+                font-size: 28px;
+            }
+            
+            .service-card h3 {
+                font-size: 1.2em;
+            }
+            
+            .service-card p {
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (max-width: 768px) {
+            /* Larger tap targets */
+            a, button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Better spacing for touch */
+            .service-link {
+                padding: 10px 0;
+                display: inline-block;
+            }
+            
+            /* Prevent text selection issues on touch */
+            .service-card,
+            .nav-links a,
+            .mobile-menu {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        
+        /* Small phones */
+        @media (max-width: 380px) {
+            .bgimg-1 .w3-jumbo {
+                font-size: 1.8em !important;
+            }
+            
+            .services-header h2 {
+                font-size: 1.5em;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.5em;
+            }
+        }
+        
+        /* Landscape mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .bgimg-1 {
+                min-height: 120vh;
+            }
+            
+            .bgimg-1::before {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+        
+        /* Fix for iOS input zoom */
+        @media (max-width: 768px) {
+            input[type="text"],
+            input[type="email"],
+            textarea,
+            select {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Mobile sidebar improvements */
+        #mySidebar {
+            width: 280px;
+            max-width: 85vw;
+        }
+        
+        #mySidebar .w3-bar-item {
+            padding: 16px 20px;
+            font-size: 1em;
         }
     </style>
 </head>
@@ -322,7 +804,7 @@
 <body>
 
     <!-- Custom Navbar -->
-    <div class="custom-navbar">
+    <div class="custom-navbar" id="mainNavbar">
         <div class="navbar-container">
             <div class="logo-container">
                 <a href="#home">
@@ -331,10 +813,10 @@
             </div>
             <nav class="nav-links">
                 <a href="#about">O nás</a>
-                <a href="#team"><i class="fa fa-user"></i> Služby</a>
-                <a href="#work"><i class="fa fa-th"></i> Projekty</a>
-                <a href="#pricing"><i class="fa fa-usd"></i> Cenník</a>
-                <a href="#contact"><i class="fa fa-envelope"></i> Kontakt</a>
+                <a href="#team">Služby</a>
+                <a href="#work">Projekty</a>
+                <a href="sprava-budov.html">Správa budov</a>
+                <a href="#contact" class="nav-cta"><i class="fa fa-envelope"></i> Kontakt</a>
             </nav>
             <div class="mobile-menu" onclick="toggleMobileMenu()">
                 <i class="fa fa-bars"></i>
@@ -342,16 +824,15 @@
         </div>
     </div>
 
-    <!-- Sidebar on small screens when clicking the menu icon -->
-    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
-        style="display:none" id="mySidebar">
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
-            ×</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-        <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">Služby</a>
-        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
-        <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <!-- Mobile Sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large"
+        style="display:none; background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16" style="color: #333;">Zavrieť ×</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">O nás</a>
+        <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">Služby</a>
+        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">Projekty</a>
+        <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">Správa budov</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button" style="background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%); color: white; margin: 16px; border-radius: 8px;">Kontakt</a>
     </nav>
 
     <!-- Header with full-height image -->
@@ -366,140 +847,78 @@
         </div>
 
     </header>
-    <!-- Team Section -->
-    <div class="w3-container" style="padding:128px 16px" id="team">
-        <h3 class="w3-center">Služby</h3>
-        <p class="w3-center w3-large">Pre bližšie informácie k jendotlivým službám neváhajte a kontaktujte nás</p>
-        
-        
-
-        <!-- Second row of services -->
-        <div class="w3-row-padding" style="margin-top:32px">
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="	fa fa-edit"
-                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>Realizácia projektu</h3>
-                        <p>Zabezpečujeme kompletnú realizáciu stavebných projektov od základov až po finálne dokončenie. Náš tím odborníkov dohliadne na každý detail, aby váš projekt splnil všetky vaše očakávania v požadovanom čase a rozpočte. Garantujeme profesionálny prístup a vysokú kvalitu.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-envelope-o"
-                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>Stavebný dozor</h3>
-                        <p>Profesionálny stavebný dozor zabezpečuje kontrolu kvality a dodržiavanie technických noriem počas celého procesu výstavby. Naši certifikovaní dozorcovia garantujú bezpečnosť a kvalitu vašej stavby. Monitorujeme každý krok výstavby a zaistíme súlad s projektovou dokumentáciou.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-fax" style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>Správa nehnuteľností</h3>
-                        <p>Poskytujeme komplexné služby správy a údržby nehnuteľností vrátane technického servisu, preventívnych prehliadok a koordinácie opráv. Staráme sa o vaše nehnuteľnosti tak, aby si zachovali svoju hodnotu a funkcionalitu. Zabezpečujeme efektívne a ekonomické riešenia pre správu majetku.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-folder-open-o"
-                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>Asistenčné služby</h3>
-                        <p>Ponúkame širokú škálu asistenčných služieb vrátane administratívnej podpory, koordinácie s úradmi, vybavenia povolení a dokumentácie. Pomáhame vám navigovať zložitosťami stavebného procesu a legislatívnymi požiadavkami. Zjednodušujeme byrokraciu a šetríme váš čas.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-caret-square-o-right"
-                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>Architektonické návrhy</h3>
-                        <p>Tvoríme moderné a funkčné architektonické riešenia pre rodinné domy, bytové komplexy a komerčné objekty. Naše návrhy spájajú estetiku s praktickosťou a rešpektujú individuálne potreby klientov.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-cubes"
-                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>Konzultačné služby</h3>
-                        <p>Poskytujeme odborné poradenstvo v oblasti stavebníctva, projektovania a územného plánovania. Pomáhame klientom orientovať sa v legislatívnych požiadavkách a technických normách.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-desktop"
-                            style="font-size: 8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>3D vizualizácie</h3>
-                        <p>Vytvárame realistické 3D vizualizácie projektov, ktoré umožňují klientom vidieť finálny výsledok už pred začiatkom stavby. Špecializujeme sa na exteriérové a interiérové vizualizácie.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
-
-                    <div class="w3-container" style="text-align: center;">
-                        <i class="fa fa-leaf"
-                            style="font-size:8vh;color:#B8A082;margin-top: 1vh;"></i>
-                        <h3>Energetické audity</h3>
-                        <p>Vykonávame energetické audity budov a navrhneme opatrenia na zníženie energetickej náročnosti. Pomáhame dosiahnuť lepšiu energetickú efektívnosť a úspory na prevádzkových nákladoch.</p>
-                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                Contact</button></p>
-                    </div>
-                </div>
-            </div>
-
+    <!-- Services Section -->
+    <section class="services-section" id="team">
+        <div class="services-header">
+            <h2>Ponúkané služby</h2>
+            <p>Pre bližšie informácie k jednotlivým službám neváhajte a kontaktujte nás. Sme tu, aby sme vám pomohli s každým krokom vašej stavby.</p>
         </div>
-
-        <!-- Promo Section "Statistics" -->
-        <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64" style="background: linear-gradient(135deg, #E6D2BE 0%, #D9C3A9 25%, #C9B496 75%, #B8A082 100%);">
-            <div class="w3-quarter">
-                <span class="w3-xxlarge">14+</span>
-                <br>Zmluvných stavebných partnerov
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-pencil-square-o"></i>
+                </div>
+                <h3>Štúdie</h3>
+                <p>Overenie možnosti umiestnenia a usporiadania stavby, vytvorenie architektonického návrhu. Pripravíme pre vás komplexnú štúdiu.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
             </div>
-            <div class="w3-quarter">
-                <span class="w3-xxlarge">55+</span>
-                <br>Hotových stavieb
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-desktop"></i>
+                </div>
+                <h3>Vizualizácie</h3>
+                <p>Vyhotovenie vizualizácií interiéru a exteriéru. Realistické 3D zobrazenia vášho projektu ešte pred začatím stavby.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
             </div>
-            <div class="w3-quarter">
-                <span class="w3-xxlarge">89+</span>
-                <br>Spokojných zákazníkov
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-home"></i>
+                </div>
+                <h3>Interiérová štúdia</h3>
+                <p>Rozšírenie vizualizácií o detailnejšie výkresy dispozície, rozloženie svietidiel a vnútorných inštalácií.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
             </div>
-            <div class="w3-quarter">
-                <span class="w3-xxlarge">150+</span>
-                <br>Vykonaných projektových realizácii
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-file-text-o"></i>
+                </div>
+                <h3>Stavebný zámer</h3>
+                <p>Vyhotovenie projektovej dokumentácie pre účely vydania stavebného povolenia. Zabezpečíme všetky podklady.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+                <h3>Preskúmanie spôsobilosti</h3>
+                <p>Legalizácia a zápis už existujúcich stavieb na ktoré nebolo vydané stavebné povolenie.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-building-o"></i>
+                </div>
+                <h3>Projekt na ohlásenie</h3>
+                <p>Ohlásenia drobných stavieb, letné kuchyne, prístrešky, garáže. Rýchle riešenie pre menšie projekty.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-cogs"></i>
+                </div>
+                <h3>Inžinierska činnosť</h3>
+                <p>Postaráme sa o získanie povolení pre stavbu. Kompletný servis od A po Z s vybavením dokumentov.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
             </div>
         </div>
+    </section>
 
         <!-- Work Section -->
         <div class="w3-container" style="padding:128px 16px" id="work">
@@ -508,107 +927,47 @@
 
             <div class="w3-row-padding" style="margin-top:64px">
                 <div class="w3-col l3 m6">
-                    <img src="01-family-house-trebisov.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="01-family-house-trebisov.jpg" style="width:100%" class="w3-hover-opacity"
                         alt="Rodinný dom Trebišov" title="Rodinný dom Trebišov">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="02-recreation-cabin-kosice.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="02-recreation-cabin-kosice.jpg" style="width:100%" class="w3-hover-opacity"
                         alt="Rekreačná chata Košice" title="Rekreačná chata Košice">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="03-duplex-house-bratislava.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="03-duplex-house-bratislava.png" style="width:100%" class="w3-hover-opacity"
                         alt="Dvojdom Bratislava" title="Dvojdom Bratislava">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="05-family-house-humenne.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="05-family-house-humenne.jpg" style="width:100%" class="w3-hover-opacity"
                         alt="Rodinný dom Humenné" title="Rodinný dom Humenné">
                 </div>
             </div>
 
             <div class="w3-row-padding w3-section">
                 <div class="w3-col l3 m6">
-                    <img src="08-rural-house-hungary.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="08-rural-house-hungary.jpg" style="width:100%" class="w3-hover-opacity"
                         alt="Vidiecky dom Maďarsko" title="Vidiecky dom Maďarsko">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="11-hotel s polyfunkciou.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="11-hotel s polyfunkciou.jpg" style="width:100%" class="w3-hover-opacity"
                         alt="Hotel s polyfunkciou" title="Hotel s polyfunkciou">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="12-family-house-chrastne.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="12-family-house-chrastne.jpg" style="width:100%" class="w3-hover-opacity"
                         alt="Rodinný dom Chrastné" title="Rodinný dom Chrastné">
                 </div>
                 <div class="w3-col l3 m6">
-                    <img src="15-interior-family-house-presov.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    <img src="15-interior-family-house-presov.jpg" style="width:100%" class="w3-hover-opacity"
                         alt="Interiér rodinný dom Prešov" title="Interiér rodinný dom Prešov">
                 </div>
             </div>
-        </div>
-
-        <!-- Modal for full size images on click-->
-        <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-            <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright"
-                title="Close Modal Image">×</span>
-            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-                <img id="img01" class="w3-image">
-                <p id="caption" class="w3-opacity w3-large"></p>
-            </div>
-        </div>
-
-        <!-- Pricing Section -->
-        <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px; background: linear-gradient(135deg, #E6D2BE 0%, #D9C3A9 25%, #C9B496 75%, #B8A082 100%);" id="pricing">
-            <h2>Potrebujete dlhodobú asistenciu s rozsiahlejšími projektami?</h2>
-            <h3>Radi Vám poskytneme dlhodobý stavebný dozor</h3>
-            <p class="w3-large">Vyberte si úvodnú obhliadku a konzultáciu</p>
-            <div class="w3-row-padding" style="margin-top:64px">
-                <div class="w3-third w3-section">
-                    <ul class="w3-ul w3-white w3-hover-shadow">
-                        <li class="w3-black w3-xlarge w3-padding-32">Basic</li>
-                        <li class="w3-padding-16"><b>10h</b> Dozor/Mesiac</li>
-                        <li class="w3-padding-16"><b>10h</b> Videohovory</li>
-                        <li class="w3-padding-16"><b>Projektová</b>dokumentácia</li>
-                        <li class="w3-padding-16"><b>Dostupná</b>aplikácia </li>
-                        <li class="w3-padding-16">
-                            <h2 class="w3-wide"> 800 €</h2>
-                            <span class="w3-opacity">mesačne</span>
-                        </li>
-                        <li class="w3-light-grey w3-padding-24">
-                            <button class="w3-button w3-black w3-padding-large">Zakúpiť</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w3-third">
-                    <ul class="w3-ul w3-white w3-hover-shadow">
-                        <li class="w3-green w3-xlarge w3-padding-32">Basic</li>
-                        <li class="w3-padding-16"><b>10h</b> Dozor/Mesiac</li>
-                        <li class="w3-padding-16"><b>10h</b> Videohovory</li>
-                        <li class="w3-padding-16"><b>Projektová</b>dokumentácia</li>
-                        <li class="w3-padding-16"><b>Dostupná</b>aplikácia </li>
-                        <li class="w3-padding-16">
-                            <h2 class="w3-wide"> 800 €</h2>
-                            <span class="w3-opacity">mesačne</span>
-                        </li>
-                        <li class="w3-light-grey w3-padding-24">
-                            <button class="w3-button w3-black w3-padding-large">Zakúpiť</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w3-third w3-section">
-                    <ul class="w3-ul w3-white w3-hover-shadow">
-                        <li class="w3-black w3-xlarge w3-padding-32">Basic</li>
-                        <li class="w3-padding-16"><b>10h</b> Dozor/Mesiac</li>
-                        <li class="w3-padding-16"><b>10h</b> Videohovory</li>
-                        <li class="w3-padding-16"><b>Projektová</b>dokumentácia</li>
-                        <li class="w3-padding-16"><b>Dostupná</b>aplikácia </li>
-                        <li class="w3-padding-16">
-                            <h2 class="w3-wide"> 800 €</h2>
-                            <span class="w3-opacity">mesačne</span>
-                        </li>
-                        <li class="w3-light-grey w3-padding-24">
-                            <button class="w3-button w3-black w3-padding-large">Zakúpiť</button>
-                        </li>
-                    </ul>
-                </div>
+            
+            <!-- Load More Button -->
+            <div class="w3-center" style="margin-top: 40px;">
+                <button id="loadMoreBtn" class="w3-button w3-black w3-padding-large w3-hover-grey" onclick="loadMoreProjects()">
+                    <i class="fa fa-plus"></i> Načítať viac
+                </button>
             </div>
         </div>
 
@@ -644,7 +1003,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form action="/action_page.php" target="_blank">
+                    <form id="contactForm" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Vaše meno</label>
                             <input type="text" id="name" name="name" required>
@@ -661,26 +1020,46 @@
                             <label for="message">Vaša správa (voliteľný)</label>
                             <textarea id="message" name="message"></textarea>
                         </div>
-                        <button type="submit">Odoslať</button>
+                        <div class="form-group">
+                            <label for="attachment">Príloha (voliteľný)</label>
+                            <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip" multiple style="padding: 10px; background: white;">
+                            <small style="color: #666; display: block; margin-top: 5px;">Podporované formáty: PDF, DOC, DOCX, JPG, PNG, ZIP (max 10MB)</small>
+                        </div>
+                        <button type="submit" id="submitBtn">Odoslať</button>
+                        <div id="formMessage" style="margin-top: 15px; padding: 15px; border-radius: 5px; display: none;"></div>
                     </form>
                 </div>
             </div>
         </div>
 
         <script>
-            // Modal Image Gallery
-            function onClick(element) {
-                document.getElementById("img01").src = element.src;
-                document.getElementById("modal01").style.display = "block";
-                var captionText = document.getElementById("caption");
-                captionText.innerHTML = element.alt;
-            }
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                var navbar = document.getElementById('mainNavbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
 
+            // Load More Projects functionality
+            function loadMoreProjects() {
+                // This function can be customized to load additional projects
+                // For now, it shows an alert or can redirect to a projects page
+                alert('Ďalšie projekty budú čoskoro dostupné. Kontaktujte nás pre viac informácií.');
+                // Alternatively, redirect to a projects page:
+                // window.location.href = 'projects.html';
+            }
 
             // Mobile menu toggle
             function toggleMobileMenu() {
-                // Add mobile menu functionality if needed
-                console.log('Mobile menu clicked');
+                var sidebar = document.getElementById("mySidebar");
+                if (sidebar.style.display === 'block') {
+                    sidebar.style.display = 'none';
+                } else {
+                    sidebar.style.display = 'block';
+                }
             }
 
             // Toggle between showing and hiding the sidebar when clicking the menu icon
@@ -698,6 +1077,79 @@
             function w3_close() {
                 mySidebar.style.display = "none";
             }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Contact Form Submission
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('submitBtn');
+                const formMessage = document.getElementById('formMessage');
+                const form = this;
+                
+                // Disable button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Odosielam...';
+                formMessage.style.display = 'none';
+                
+                try {
+                    const formData = new FormData(form);
+                    
+                    // Determine the API URL based on current location
+                    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                        ? '/api/contact'
+                        : '/api/contact'; // Adjust this if deploying to a different server
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        // Success
+                        formMessage.style.display = 'block';
+                        formMessage.style.background = '#d4edda';
+                        formMessage.style.color = '#155724';
+                        formMessage.style.border = '1px solid #c3e6cb';
+                        formMessage.innerHTML = '<i class="fa fa-check-circle"></i> ' + result.message;
+                        form.reset();
+                    } else {
+                        // Error from server
+                        formMessage.style.display = 'block';
+                        formMessage.style.background = '#f8d7da';
+                        formMessage.style.color = '#721c24';
+                        formMessage.style.border = '1px solid #f5c6cb';
+                        formMessage.innerHTML = '<i class="fa fa-exclamation-circle"></i> ' + result.message;
+                    }
+                } catch (error) {
+                    // Network or other error
+                    formMessage.style.display = 'block';
+                    formMessage.style.background = '#f8d7da';
+                    formMessage.style.color = '#721c24';
+                    formMessage.style.border = '1px solid #f5c6cb';
+                    formMessage.innerHTML = '<i class="fa fa-exclamation-circle"></i> Pri odosielaní správy došlo k chybe. Skúste to prosím znova alebo nás kontaktujte telefonicky na +421910252500.';
+                    console.error('Form submission error:', error);
+                }
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Odoslať';
+            });
         </script>
 
 </body>
