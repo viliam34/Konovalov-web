@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Správa a údržba budov - Innofacility</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles-w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Raleway", sans-serif
+        }
+
+        body,
+        html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Custom Navbar Styles */
+        .custom-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 116px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo-container {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo {
+            height: 100px;
+            width: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-right: 16px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            padding: 42px 16px;
+            display: flex;
+            align-items: center;
+            height: 116px;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .nav-links a.active {
+            background-color: #f1f1f1;
+            border-bottom: 3px solid #B8A082;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            padding: 16px;
+            margin-right: 16px;
+        }
+
+        .mobile-menu i {
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Hero section for subpage */
+        .page-hero {
+            background: linear-gradient(135deg, #E6D2BE 0%, #D9C3A9 25%, #C9B496 75%, #B8A082 100%);
+            padding: 180px 16px 80px 16px;
+            text-align: center;
+            color: #333;
+        }
+
+        .page-hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Services section */
+        .services-section {
+            padding: 80px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+        }
+
+        .service-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3em;
+            color: #B8A082;
+            margin-right: 30px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #E6D2BE 0%, #D9C3A9 25%, #C9B496 75%, #B8A082 100%);
+            padding: 80px 16px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #555;
+        }
+
+        @media (max-width: 768px) {
+            .service-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Comprehensive Mobile Styles for Subpage */
+        @media (max-width: 768px) {
+            .navbar-container {
+                height: 70px;
+                padding: 0 15px;
+            }
+            
+            .logo {
+                height: 45px;
+            }
+            
+            .page-hero {
+                padding: 120px 20px 60px 20px;
+            }
+            
+            .page-hero h1 {
+                font-size: 1.8em;
+                line-height: 1.3;
+            }
+            
+            .page-hero p {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+            
+            .services-section {
+                padding: 50px 15px;
+            }
+            
+            .service-item {
+                padding: 25px 20px;
+                margin-bottom: 25px;
+            }
+            
+            .service-icon {
+                font-size: 2.5em;
+            }
+            
+            .service-content h3 {
+                font-size: 1.2em;
+            }
+            
+            .service-content p {
+                font-size: 0.95em;
+            }
+            
+            .cta-section {
+                padding: 60px 20px;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.5em;
+            }
+            
+            .cta-section p {
+                font-size: 1em;
+            }
+            
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 1em;
+                display: block;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Mobile sidebar */
+        #mySidebar {
+            width: 280px;
+            max-width: 85vw;
+        }
+        
+        #mySidebar .w3-bar-item {
+            padding: 16px 20px;
+            font-size: 1em;
+        }
+        
+        /* Touch-friendly */
+        @media (max-width: 768px) {
+            a, button {
+                min-height: 44px;
+            }
+            
+            .mobile-menu {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Navbar -->
+    <div class="custom-navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="archvizual_logo.svg" alt="ARCHVIZUAL.STUDIO" class="logo">
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html#about">O nás</a>
+                <a href="index.html#team"><i class="fa fa-user"></i> Služby</a>
+                <a href="index.html#work"><i class="fa fa-th"></i> Projekty</a>
+                <a href="sprava-budov.html" class="active"><i class="fa fa-building"></i> Správa budov</a>
+                <a href="index.html#contact"><i class="fa fa-envelope"></i> Kontakt</a>
+            </nav>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar on small screens -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+        style="display:none" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Zavrieť ×</a>
+        <a href="index.html#about" onclick="w3_close()" class="w3-bar-item w3-button">O nás</a>
+        <a href="index.html#team" onclick="w3_close()" class="w3-bar-item w3-button">Služby</a>
+        <a href="index.html#work" onclick="w3_close()" class="w3-bar-item w3-button">Projekty</a>
+        <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button">Správa budov</a>
+        <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button">Kontakt</a>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <h1>Správa a údržba budov</h1>
+        <p>Poskytujeme komplexné služby správy a údržby nehnuteľností pre bytové domy, komerčné objekty a priemyselné budovy. Náš tím odborníkov sa postará o všetky aspekty správy vášho majetku.</p>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section">
+        <div class="service-item">
+            <div class="service-icon">
+                <i class="fa fa-building"></i>
+            </div>
+            <div class="service-content">
+                <h3>Technická správa budov</h3>
+                <p>Zabezpečujeme kompletnú technickú správu budov vrátane pravidelných prehliadok, údržby technických zariadení, kontroly bezpečnostných systémov a koordinácie opráv. Náš tím technických špecialistov monitoruje stav budovy a zabezpečuje jej bezproblémový chod.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">
+                <i class="fa fa-wrench"></i>
+            </div>
+            <div class="service-content">
+                <h3>Preventívna údržba</h3>
+                <p>Vykonávame pravidelnú preventívnu údržbu všetkých systémov budovy - vykurovanie, vzduchotechnika, elektroinštalácia, vodovod a kanalizácia. Preventívna údržba predchádza nákladným opravám a predlžuje životnosť zariadení.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">
+                <i class="fa fa-file-text"></i>
+            </div>
+            <div class="service-content">
+                <h3>Administratívna správa</h3>
+                <p>Poskytujeme komplexnú administratívnu podporu vrátane vedenia dokumentácie, správy zmlúv s dodávateľmi, vyúčtovania služieb a komunikácie s vlastníkmi a nájomníkmi. Všetku administratívu vedieme prehľadne a transparentne.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">
+                <i class="fa fa-phone"></i>
+            </div>
+            <div class="service-content">
+                <h3>Havarijná služba 24/7</h3>
+                <p>Poskytujeme nepretržitú havarijnú službu pre riešenie naliehavých situácií. Náš tím je pripravený okamžite reagovať na havárie vody, elektriny, plynu alebo iné mimoriadne udalosti.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">
+                <i class="fa fa-leaf"></i>
+            </div>
+            <div class="service-content">
+                <h3>Energetický manažment</h3>
+                <p>Optimalizujeme energetickú spotrebu budov, navrhujeme a implementujeme úsporné opatrenia. Pomáhame znižovať prevádzkové náklady a zvyšovať energetickú efektivitu nehnuteľností.</p>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-icon">
+                <i class="fa fa-users"></i>
+            </div>
+            <div class="service-content">
+                <h3>Správa spoločenstva vlastníkov</h3>
+                <p>Zabezpečujeme kompletnú správu pre spoločenstvá vlastníkov bytov vrátane organizácie schôdzí, vedenia účtovníctva, správy fondu opráv a komunikácie s vlastníkmi.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h2>Máte záujem o naše služby?</h2>
+        <p>Kontaktujte nás pre nezáväznú konzultáciu a cenovú ponuku na mieru.</p>
+        <a href="index.html#contact" class="cta-button"><i class="fa fa-envelope"></i> Kontaktujte nás</a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            var sidebar = document.getElementById("mySidebar");
+            if (sidebar.style.display === 'block') {
+                sidebar.style.display = 'none';
+            } else {
+                sidebar.style.display = 'block';
+            }
+        }
+
+        // Close the sidebar with the close button
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

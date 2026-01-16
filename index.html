@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Innofacility</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles-w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /*original w3 template: https://www.w3schools.com/w3css/4/w3.css */
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Raleway", sans-serif
+        }
+
+        body,
+        html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Full height image header */
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("house-colored.jpeg");
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Dark overlay for better text contrast */
+        .bgimg-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.85) 0%, rgba(50, 50, 50, 0.7) 50%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 1;
+        }
+
+        /* Accent decoration */
+        .bgimg-1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #C9B496 0%, #B8A082 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        /* Hero content container */
+        .hero-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 60px 80px;
+            width: 100%;
+        }
+
+        /* Hero subtitle */
+        .hero-subtitle {
+            display: inline-block;
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            color: #1a1a1a;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        /* Hero main title */
+        .hero-title {
+            font-size: 4em;
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title span {
+            color: #C9B496;
+        }
+
+        /* Hero description */
+        .hero-description {
+            font-size: 1.25em;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 550px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Hero buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hero-btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-btn-primary {
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            color: #1a1a1a;
+            box-shadow: 0 4px 20px rgba(184, 160, 130, 0.4);
+        }
+
+        .hero-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(184, 160, 130, 0.5);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Hero stats */
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #C9B496;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Mobile responsive hero */
+        @media (max-width: 768px) {
+            .hero-container {
+                padding: 100px 25px 60px;
+            }
+
+            .hero-title {
+                font-size: 2.2em;
+            }
+
+            .hero-description {
+                font-size: 1em;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .hero-stat-number {
+                font-size: 2em;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* Legacy hero text styling - keeping for compatibility */
+        .hero-text {
+            position: relative;
+            z-index: 100;
+            color: white !important;
+        }
+
+        .w3-bar .w3-button {
+            padding: 42px 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Custom Navbar Styles - Modern Design */
+        .custom-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 0;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .custom-navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 40px;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+
+        .logo-container {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            margin: 0;
+            padding: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: #B8A082;
+            background: rgba(184, 160, 130, 0.08);
+        }
+
+        .nav-links a:hover::after {
+            width: 60%;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+            font-size: 1em;
+        }
+
+        /* CTA Button in navbar */
+        .nav-links a.nav-cta {
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            color: white;
+            border-radius: 25px;
+            padding: 12px 24px;
+            margin-left: 10px;
+            box-shadow: 0 4px 15px rgba(184, 160, 130, 0.3);
+        }
+
+        .nav-links a.nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 160, 130, 0.4);
+            background: linear-gradient(135deg, #D4C4A8 0%, #C9B496 100%);
+        }
+
+        .nav-links a.nav-cta::after {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-menu:hover {
+            background: rgba(184, 160, 130, 0.1);
+        }
+
+        .mobile-menu i {
+            font-size: 24px;
+            color: #444;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .navbar-container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Override W3.CSS default padding for logo */
+        #myNavbar .w3-bar-item:first-child {
+            padding: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        /* Override W3.CSS container padding */
+        .w3-top {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        /* Override W3.CSS bar padding */
+        .w3-bar {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .w3-right {
+            display: flex;
+            align-items: center;
+            margin-right: 16px;
+        }
+        
+        .w3-bar-item {
+            line-height: 1.2;
+        }
+
+        /* Modern Services Section Styles */
+        .services-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+        }
+
+        .services-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .services-header h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .services-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            border-radius: 3px;
+        }
+
+        .services-header p {
+            color: #666;
+            font-size: 1.15em;
+            line-height: 1.7;
+            margin-top: 25px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, rgba(201, 180, 150, 0.15) 0%, rgba(184, 160, 130, 0.15) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon-wrapper {
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            transform: scale(1.1);
+        }
+
+        .service-icon-wrapper i {
+            font-size: 32px;
+            color: #B8A082;
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover .service-icon-wrapper i {
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-card .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: #B8A082;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .service-card .service-link i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-link {
+            color: #9a8567;
+        }
+
+        .service-card:hover .service-link i {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .services-header h2 {
+                font-size: 2em;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+            }
+            
+            .service-card {
+                padding: 30px 25px;
+            }
+        }
+
+        /* Consistent sizing for project gallery images */
+        #work .w3-col img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px;
+        }
+
+        /* Contact section styling */
+        .contact-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .contact-details i {
+            margin-right: 15px;
+            color: #B8A082;
+            width: 35px;
+            font-size: 2em;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 25px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(135deg, #B8A082 0%, #A68F73 100%);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                gap: 40px;
+                padding: 0 10px;
+            }
+            
+            .contact-info {
+                padding-right: 0;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.8em;
+            }
+            
+            .contact-form {
+                padding: 25px 20px;
+            }
+        }
+
+        /* =====================================================
+           COMPREHENSIVE MOBILE STYLES
+           ===================================================== */
+        
+        /* Mobile Hero Section */
+        @media (max-width: 768px) {
+            .bgimg-1 {
+                min-height: 100vh;
+            }
+            
+            .bgimg-1::before {
+                width: 100%;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+            
+            .bgimg-1 .w3-display-left {
+                left: 20px;
+                right: 20px;
+                max-width: calc(100% - 40px);
+                text-align: center;
+            }
+            
+            .bgimg-1 .w3-jumbo {
+                font-size: 2.2em !important;
+            }
+            
+            .bgimg-1 .w3-large {
+                font-size: 1em !important;
+                line-height: 1.6;
+            }
+            
+            .bgimg-1 .w3-button {
+                padding: 12px 24px !important;
+                font-size: 0.95em !important;
+            }
+        }
+        
+        /* Mobile Navbar adjustments */
+        @media (max-width: 768px) {
+            .navbar-container {
+                height: 70px;
+                padding: 0 15px;
+            }
+            
+            .logo {
+                height: 45px;
+            }
+        }
+        
+        /* Mobile Statistics Section */
+        @media (max-width: 768px) {
+            .w3-quarter {
+                width: 50% !important;
+                float: left;
+                padding: 20px 10px;
+                box-sizing: border-box;
+            }
+            
+            .w3-quarter .w3-xxlarge {
+                font-size: 1.8em !important;
+            }
+            
+            .w3-container.w3-row.w3-center.w3-dark-grey {
+                padding: 40px 10px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .w3-quarter {
+                width: 100% !important;
+                padding: 15px 20px;
+            }
+        }
+        
+        /* Mobile Projects Section */
+        @media (max-width: 768px) {
+            #work {
+                padding: 60px 16px !important;
+            }
+            
+            #work h3 {
+                font-size: 1.8em;
+            }
+            
+            #work .w3-col {
+                width: 50% !important;
+                padding: 5px;
+            }
+            
+            #work .w3-col img {
+                height: 150px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+            }
+            
+            #loadMoreBtn {
+                padding: 12px 30px !important;
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #work .w3-col {
+                width: 100% !important;
+            }
+            
+            #work .w3-col img {
+                height: 200px;
+            }
+        }
+        
+        /* Mobile Contact Section */
+        @media (max-width: 768px) {
+            #contact {
+                padding: 60px 16px !important;
+            }
+            
+            .contact-details li {
+                font-size: 0.9em;
+            }
+            
+            .contact-details i {
+                font-size: 1.5em;
+                width: 30px;
+            }
+            
+            .contact-form input,
+            .contact-form textarea {
+                padding: 12px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .contact-form button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+        
+        /* Mobile Services Section improvements */
+        @media (max-width: 768px) {
+            .services-section {
+                padding: 60px 15px;
+            }
+            
+            .services-header {
+                margin-bottom: 40px;
+            }
+            
+            .services-header h2 {
+                font-size: 1.8em;
+            }
+            
+            .services-header p {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            
+            .service-card {
+                margin-bottom: 20px;
+            }
+            
+            .service-icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .service-icon-wrapper i {
+                font-size: 28px;
+            }
+            
+            .service-card h3 {
+                font-size: 1.2em;
+            }
+            
+            .service-card p {
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (max-width: 768px) {
+            /* Larger tap targets */
+            a, button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Better spacing for touch */
+            .service-link {
+                padding: 10px 0;
+                display: inline-block;
+            }
+            
+            /* Prevent text selection issues on touch */
+            .service-card,
+            .nav-links a,
+            .mobile-menu {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        
+        /* Small phones */
+        @media (max-width: 380px) {
+            .bgimg-1 .w3-jumbo {
+                font-size: 1.8em !important;
+            }
+            
+            .services-header h2 {
+                font-size: 1.5em;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.5em;
+            }
+        }
+        
+        /* Landscape mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .bgimg-1 {
+                min-height: 120vh;
+            }
+            
+            .bgimg-1::before {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+        
+        /* Fix for iOS input zoom */
+        @media (max-width: 768px) {
+            input[type="text"],
+            input[type="email"],
+            textarea,
+            select {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Mobile sidebar improvements */
+        #mySidebar {
+            width: 280px;
+            max-width: 85vw;
+        }
+        
+        #mySidebar .w3-bar-item {
+            padding: 16px 20px;
+            font-size: 1em;
+        }
+
+        /* App Login Button - Distinctive Style */
+        .nav-links a.nav-app-login {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white !important;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-left: 8px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a.nav-app-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white !important;
+        }
+
+        .nav-links a.nav-app-login::after {
+            display: none;
+        }
+
+        .nav-links a.nav-app-login i {
+            margin-right: 6px;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links a.nav-app-login {
+                display: none;
+            }
+        }
+
+        /* Animations for dynamic feel */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .service-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+        .service-card:nth-child(7) { animation-delay: 0.7s; }
+        .service-card:nth-child(8) { animation-delay: 0.8s; }
+        .service-card:nth-child(9) { animation-delay: 0.9s; }
+
+        /* Keywords styling */
+        .hero-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+        }
+
+        .hero-keyword {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .hero-keyword:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-keywords {
+                justify-content: center;
+            }
+            
+            .hero-keyword {
+                font-size: 0.75em;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Navbar -->
+    <div class="custom-navbar" id="mainNavbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="#home">
+                    <img src="archvizual_logo.svg" alt="ARCHVIZUAL.STUDIO" class="logo">
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="#about">O nás</a>
+                <a href="#team">Služby</a>
+                <a href="#work">Projekty</a>
+                <a href="sprava-budov.html">Správa budov</a>
+                <a href="#contact" class="nav-cta"><i class="fa fa-envelope"></i> Kontakt</a>
+                <a href="#" class="nav-app-login"><i class="fa fa-sign-in"></i> Prihlásenie</a>
+            </nav>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large"
+        style="display:none; background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16" style="color: #333;">Zavrieť ×</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">O nás</a>
+        <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">Služby</a>
+        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">Projekty</a>
+        <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #444; border-bottom: 1px solid #eee;">Správa budov</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button" style="background: linear-gradient(135deg, #C9B496 0%, #B8A082 100%); color: white; margin: 16px; border-radius: 8px;">Kontakt</a>
+        <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; margin: 16px; margin-top: 8px; border-radius: 8px;"><i class="fa fa-sign-in" style="margin-right: 8px;"></i>Prihlásenie</a>
+    </nav>
+
+    <!-- Header with full-height image -->
+    <header class="bgimg-1" id="home">
+        <div class="hero-container hero-content">
+            <span class="hero-subtitle">Architektúra • Projektovanie • Správa budov</span>
+            
+            <h1 class="hero-title">Pusťte sa s nami do Vašej <span>vysnívanej stavby</span></h1>
+            
+            <p class="hero-description">Prednosťou našej spoločnosti je profesionalita a skúsenosti nadobudnuté z projektovania a riadenia stavieb. Postaráme sa o najrýchlejšie a najefektívnejšie riešenie Vašej zákazky.</p>
+            
+            <div class="hero-buttons">
+                <a href="#team" class="hero-btn hero-btn-primary">
+                    <i class="fa fa-th-large"></i> Naše služby
+                </a>
+                <a href="#contact" class="hero-btn hero-btn-secondary">
+                    <i class="fa fa-envelope"></i> Kontaktujte nás
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </header>
+    <!-- Services Section -->
+    <section class="services-section" id="team">
+        <div class="services-header">
+            <h2>Ponúkané služby</h2>
+            <p>Pre bližšie informácie k jednotlivým službám neváhajte a kontaktujte nás. Sme tu, aby sme vám pomohli s každým krokom vašej stavby.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-pencil-square-o"></i>
+                </div>
+                <h3>Štúdie</h3>
+                <p>Overenie možnosti umiestnenia a usporiadania stavby, vytvorenie architektonického návrhu. Pripravíme pre vás komplexnú štúdiu.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-desktop"></i>
+                </div>
+                <h3>Vizualizácie</h3>
+                <p>Vyhotovenie vizualizácií interiéru a exteriéru. Realistické 3D zobrazenia vášho projektu ešte pred začatím stavby.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-home"></i>
+                </div>
+                <h3>Interiérová štúdia</h3>
+                <p>Rozšírenie vizualizácií o detailnejšie výkresy dispozície, rozloženie svietidiel a vnútorných inštalácií.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-file-text-o"></i>
+                </div>
+                <h3>Stavebný zámer</h3>
+                <p>Vyhotovenie projektovej dokumentácie pre účely vydania stavebného povolenia. Zabezpečíme všetky podklady.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+                <h3>Preskúmanie spôsobilosti</h3>
+                <p>Legalizácia a zápis už existujúcich stavieb na ktoré nebolo vydané stavebné povolenie.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-building-o"></i>
+                </div>
+                <h3>Projekt na ohlásenie</h3>
+                <p>Ohlásenia drobných stavieb, letné kuchyne, prístrešky, garáže. Rýchle riešenie pre menšie projekty.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-cogs"></i>
+                </div>
+                <h3>Inžinierska činnosť</h3>
+                <p>Postaráme sa o získanie povolení pre stavbu. Kompletný servis od A po Z s vybavením dokumentov.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-cube"></i>
+                </div>
+                <h3>Skenovanie budov</h3>
+                <p>3D laserové skenovanie existujúcich stavieb pre presnú dokumentáciu a digitalizáciu objektov.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-cubes"></i>
+                </div>
+                <h3>BIM Modelovanie</h3>
+                <p>Vyhotovenie BIM modelov pre efektívne plánovanie, výstavbu a správu budov počas celého životného cyklu.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon-wrapper">
+                    <i class="fa fa-refresh"></i>
+                </div>
+                <h3>Zmena účelu využitia</h3>
+                <p>Pomôžeme vám s administratívnym procesom zmeny účelu využitia existujúcich priestorov a budov.</p>
+                <a href="#contact" class="service-link">Zistiť viac <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+        <!-- Work Section -->
+        <div class="w3-container" style="padding:128px 16px" id="work">
+            <h3 class="w3-center">Dokončené projekty</h3>
+            <p class="w3-center w3-large">Prezrite si galériu našich realizácií</p>
+
+            <div class="w3-row-padding" style="margin-top:64px">
+                <div class="w3-col l3 m6">
+                    <img src="01-family-house-trebisov.jpg" style="width:100%" class="w3-hover-opacity"
+                        alt="Rodinný dom Trebišov" title="Rodinný dom Trebišov">
+                </div>
+                <div class="w3-col l3 m6">
+                    <img src="02-recreation-cabin-kosice.jpg" style="width:100%" class="w3-hover-opacity"
+                        alt="Rekreačná chata Košice" title="Rekreačná chata Košice">
+                </div>
+                <div class="w3-col l3 m6">
+                    <img src="03-duplex-house-bratislava.png" style="width:100%" class="w3-hover-opacity"
+                        alt="Dvojdom Bratislava" title="Dvojdom Bratislava">
+                </div>
+                <div class="w3-col l3 m6">
+                    <img src="05-family-house-humenne.jpg" style="width:100%" class="w3-hover-opacity"
+                        alt="Rodinný dom Humenné" title="Rodinný dom Humenné">
+                </div>
+            </div>
+
+            <div class="w3-row-padding w3-section">
+                <div class="w3-col l3 m6">
+                    <img src="08-rural-house-hungary.jpg" style="width:100%" class="w3-hover-opacity"
+                        alt="Vidiecky dom Maďarsko" title="Vidiecky dom Maďarsko">
+                </div>
+                <div class="w3-col l3 m6">
+                    <img src="11-hotel s polyfunkciou.jpg" style="width:100%" class="w3-hover-opacity"
+                        alt="Hotel s polyfunkciou" title="Hotel s polyfunkciou">
+                </div>
+                <div class="w3-col l3 m6">
+                    <img src="12-family-house-chrastne.jpg" style="width:100%" class="w3-hover-opacity"
+                        alt="Rodinný dom Chrastné" title="Rodinný dom Chrastné">
+                </div>
+                <div class="w3-col l3 m6">
+                    <img src="15-interior-family-house-presov.jpg" style="width:100%" class="w3-hover-opacity"
+                        alt="Interiér rodinný dom Prešov" title="Interiér rodinný dom Prešov">
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="w3-center" style="margin-top: 40px;">
+                <button id="loadMoreBtn" class="w3-button w3-black w3-padding-large w3-hover-grey" onclick="loadMoreProjects()">
+                    <i class="fa fa-plus"></i> Načítať viac
+                </button>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Kontaktujte nás</h3>
+                    <p>Prednosťou našej spoločnosti je profesionalita a skúsenosť nadobudnuté z projektovania a riadenia stavieb. Postaráme sa najlepšie o čo najrýchlejšie a najefektívnejšie riešenie Vašej zákazky. Samozrejmosťou je osobný prístup a vysoké pracovné nasadenie.</p>
+                    
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <div>
+                                Letná 42,<br>
+                                040 01 Košice<br>
+                                Slovenská republika
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <span>archvizual.studio@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <span>+421910252500</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-clock-o"></i>
+                            <span>otvr. hod. 8:00 – 16:30</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Vaše meno</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Váš email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Predmet</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Vaša správa (voliteľný)</label>
+                            <textarea id="message" name="message"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="attachment">Príloha (voliteľný)</label>
+                            <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip" multiple style="padding: 10px; background: white;">
+                            <small style="color: #666; display: block; margin-top: 5px;">Podporované formáty: PDF, DOC, DOCX, JPG, PNG, ZIP (max 10MB)</small>
+                        </div>
+                        <button type="submit" id="submitBtn">Odoslať</button>
+                        <div id="formMessage" style="margin-top: 15px; padding: 15px; border-radius: 5px; display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                var navbar = document.getElementById('mainNavbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Load More Projects functionality
+            function loadMoreProjects() {
+                // This function can be customized to load additional projects
+                // For now, it shows an alert or can redirect to a projects page
+                alert('Ďalšie projekty budú čoskoro dostupné. Kontaktujte nás pre viac informácií.');
+                // Alternatively, redirect to a projects page:
+                // window.location.href = 'projects.html';
+            }
+
+            // Mobile menu toggle
+            function toggleMobileMenu() {
+                var sidebar = document.getElementById("mySidebar");
+                if (sidebar.style.display === 'block') {
+                    sidebar.style.display = 'none';
+                } else {
+                    sidebar.style.display = 'block';
+                }
+            }
+
+            // Toggle between showing and hiding the sidebar when clicking the menu icon
+            var mySidebar = document.getElementById("mySidebar");
+
+            function w3_open() {
+                if (mySidebar.style.display === 'block') {
+                    mySidebar.style.display = 'none';
+                } else {
+                    mySidebar.style.display = 'block';
+                }
+            }
+
+            // Close the sidebar with the close button
+            function w3_close() {
+                mySidebar.style.display = "none";
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Contact Form Submission
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('submitBtn');
+                const formMessage = document.getElementById('formMessage');
+                const form = this;
+                
+                // Disable button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Odosielam...';
+                formMessage.style.display = 'none';
+                
+                try {
+                    const formData = new FormData(form);
+                    
+                    // Determine the API URL based on current location
+                    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                        ? '/api/contact'
+                        : '/api/contact'; // Adjust this if deploying to a different server
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        // Success
+                        formMessage.style.display = 'block';
+                        formMessage.style.background = '#d4edda';
+                        formMessage.style.color = '#155724';
+                        formMessage.style.border = '1px solid #c3e6cb';
+                        formMessage.innerHTML = '<i class="fa fa-check-circle"></i> ' + result.message;
+                        form.reset();
+                    } else {
+                        // Error from server
+                        formMessage.style.display = 'block';
+                        formMessage.style.background = '#f8d7da';
+                        formMessage.style.color = '#721c24';
+                        formMessage.style.border = '1px solid #f5c6cb';
+                        formMessage.innerHTML = '<i class="fa fa-exclamation-circle"></i> ' + result.message;
+                    }
+                } catch (error) {
+                    // Network or other error
+                    formMessage.style.display = 'block';
+                    formMessage.style.background = '#f8d7da';
+                    formMessage.style.color = '#721c24';
+                    formMessage.style.border = '1px solid #f5c6cb';
+                    formMessage.innerHTML = '<i class="fa fa-exclamation-circle"></i> Pri odosielaní správy došlo k chybe. Skúste to prosím znova alebo nás kontaktujte telefonicky na +421910252500.';
+                    console.error('Form submission error:', error);
+                }
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Odoslať';
+            });
+        </script>
+
+</body>
+
+</html>
