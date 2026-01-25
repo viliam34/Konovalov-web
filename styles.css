@@ -1,32 +1,56 @@
+/* =====================================================
+   MODERN DARK THEME - VIVID DESIGN
+   ===================================================== */
+
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-tertiary: #1a1a25;
+    --accent-cyan: #00d4ff;
+    --accent-magenta: #ff0080;
+    --accent-purple: #7c3aed;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+    --gradient-accent-reverse: linear-gradient(135deg, #ff0080 0%, #00d4ff 100%);
+    --glow-cyan: 0 0 30px rgba(0, 212, 255, 0.4);
+    --glow-magenta: 0 0 30px rgba(255, 0, 128, 0.4);
+}
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
 }
 
 .header {
     overflow: hidden;
-    background-color: #f5ae1f;
+    background: var(--bg-secondary);
     padding: 20px 10px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
 }
 
 .header a {
     float: left;
-    color: black;
+    color: var(--text-primary);
     text-align: center;
     padding: 12px;
     text-decoration: none;
     font-size: 18px;
     line-height: 25px;
-    border-radius: 4px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .header a:hover {
-    background-color: #ddd;
-    color: black;
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-cyan);
+    box-shadow: var(--glow-cyan);
 }
 
 .grid-wrapper {
-    background-color: rgb(255, 255, 255);
+    background: var(--bg-primary);
     height: fit-content;
     z-index: 1;
     text-align: center;
@@ -34,43 +58,45 @@ body {
 }
 
 .main-grid {
-    background-color: rgb(255, 255, 255);
+    background: var(--bg-secondary);
     width: 60vw;
     height: fit-content;
     margin-left: 20%;
     z-index: 2;
     display: grid;
     grid-template-columns: auto auto;
-
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .tile-text {
-    font-family: verdana, sans-serif;
+    font-family: 'Raleway', verdana, sans-serif;
     width: 30vw;
     height: 38vh;
-    background-color: rgb(255, 255, 255);
-
+    background: var(--bg-tertiary);
 }
 
 .tile-text>p {
-    color: rgb(0, 0, 0);
+    color: var(--text-secondary);
     padding: 2vh;
 }
 
 .tile-img {
     width: 100%;
     height: 38vh;
-    background-color: rgb(255, 255, 255);
+    background: var(--bg-secondary);
 }
 
 .footer {
     margin-top: 2vh;
-    background-color: rgb(25, 25, 25);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     height: 50vh;
     display: grid;
-    color: white;
-    font-family: verdana, sans-serif;
+    color: var(--text-primary);
+    font-family: 'Raleway', verdana, sans-serif;
     grid-template-columns: auto auto auto auto;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
 }
 
 .footer>div {
@@ -82,38 +108,71 @@ body {
 .services-grid {
     display: grid;
     width: 70vw;
-
-    grid-template-columns: auto auto auto auto;
-    gap: 1vh;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2vh;
     margin-left: 15vw;
     margin-top: 2vh;
     margin-bottom: 5vh;
 }
 
 .service-tab {
-    background-color: rgb(243, 243, 243);
-    height: 50vh;
-    border-radius: 1vh;
-    max-width: 35vh;
+    background: rgba(26, 26, 37, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: auto;
+    min-height: 45vh;
+    border-radius: 16px;
+    max-width: none;
     font-size: 1.5vh;
     padding: 3vh;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
 }
 
 #services-paragraph {
     font-size: 2em;
-    font-weight: normal;
+    font-weight: 600;
     font-style: normal;
-    font-family: verdana, sans-serif;
+    font-family: 'Raleway', verdana, sans-serif;
+    color: var(--text-primary);
 }
 
 .service-icon-wrapper {
     padding-top: 2vh;
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    transition: all 0.4s ease;
+}
+
+.service-icon-wrapper i {
+    color: var(--accent-cyan);
+    font-size: 28px;
+    transition: all 0.4s ease;
 }
 
 .service-tab:hover {
-    background-color: rgb(165, 165, 165);
-    height: 50vh;
-    border-radius: 1vh;
+    background: rgba(26, 26, 37, 0.9);
+    border-radius: 16px;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 212, 255, 0.1);
+    border-color: rgba(0, 212, 255, 0.3);
+}
+
+.service-tab:hover .service-icon-wrapper {
+    background: var(--gradient-accent);
+    border-color: transparent;
+    box-shadow: var(--glow-cyan);
+}
+
+.service-tab:hover .service-icon-wrapper i {
+    color: white;
 }
 
 .footer-content-wrapper {
@@ -124,4 +183,62 @@ body {
 
 .footer-content-wrapper>p {
     font-size: 2vh;
+    color: var(--text-secondary);
+}
+
+/* Button Styles */
+.btn-primary {
+    background: var(--gradient-accent);
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5), 0 8px 30px rgba(255, 0, 128, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--accent-cyan);
+    padding: 12px 28px;
+    border: 2px solid var(--accent-cyan);
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--gradient-accent);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--glow-cyan);
+}
+
+/* Glowing Text Effect */
+.glow-text {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Card Styles */
+.card {
+    background: rgba(26, 26, 37, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
 }
