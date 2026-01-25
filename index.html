@@ -738,31 +738,60 @@
         @media (max-width: 768px) {
             .bgimg-1 {
                 min-height: 100vh;
+                background-position: center right;
             }
             
+            /* Full overlay on mobile instead of diagonal */
             .bgimg-1::before {
                 width: 100%;
-                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+                clip-path: none;
+                background: linear-gradient(180deg, 
+                    rgba(10, 10, 15, 0.92) 0%, 
+                    rgba(10, 10, 15, 0.85) 40%,
+                    rgba(10, 10, 15, 0.7) 70%,
+                    rgba(10, 10, 15, 0.5) 100%);
+            }
+            
+            /* Hide the diagonal accent line on mobile */
+            .bgimg-1::after {
+                display: none;
             }
             
             .bgimg-1 .w3-display-left {
                 left: 20px;
                 right: 20px;
+                top: 45%;
                 max-width: calc(100% - 40px);
                 text-align: center;
             }
             
             .bgimg-1 .w3-jumbo {
-                font-size: 2.2em !important;
+                font-size: 2.4em !important;
+                line-height: 1.2;
+                text-shadow: 0 0 40px rgba(0, 212, 255, 0.4), 0 4px 20px rgba(0, 0, 0, 0.5);
             }
             
             .bgimg-1 .w3-large {
-                font-size: 1em !important;
-                line-height: 1.6;
+                font-size: 1.05em !important;
+                line-height: 1.7;
+                margin-top: 15px;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             }
             
             .bgimg-1 .w3-button {
-                padding: 12px 24px !important;
+                padding: 14px 32px !important;
+                font-size: 1em !important;
+                margin-top: 25px !important;
+            }
+        }
+        
+        /* Small phones */
+        @media (max-width: 480px) {
+            .bgimg-1 .w3-jumbo {
+                font-size: 2em !important;
+            }
+            
+            .bgimg-1 .w3-large {
                 font-size: 0.95em !important;
             }
         }
