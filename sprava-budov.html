@@ -28,22 +28,22 @@
             scroll-behavior: smooth;
         }
 
-        /* CSS Variables */
+        /* CSS Variables - matching main site warm color scheme */
         :root {
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
             --bg-tertiary: #1a1a25;
-            --accent-cyan: #00d4ff;
-            --accent-magenta: #ff0080;
+            --accent-cyan: #d4a574;
+            --accent-magenta: #8f5729;
             --text-primary: #ffffff;
             --text-secondary: #a0a0b0;
-            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
-            --glow-cyan: 0 0 30px rgba(0, 212, 255, 0.4);
+            --gradient-accent: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
+            --glow-cyan: 0 0 30px rgba(212, 165, 116, 0.4);
         }
 
         /* Selection styling */
         ::selection {
-            background: rgba(0, 212, 255, 0.3);
+            background: rgba(212, 165, 116, 0.4);
             color: #fff;
         }
 
@@ -57,7 +57,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #00d4ff, #ff0080);
+            background: linear-gradient(180deg, #d4a574, #8f5729);
             border-radius: 5px;
         }
 
@@ -83,7 +83,8 @@
             justify-content: space-between;
             align-items: center;
             height: 80px;
-            padding: 0 40px;
+            padding: 0 40px 0 40px;
+            padding-right: 1em;
             margin: 0 auto;
             max-width: 1400px;
         }
@@ -143,15 +144,15 @@
             transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             transition: width 0.3s ease;
             border-radius: 2px;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
         }
 
         .nav-links a:hover {
-            color: #00d4ff;
-            background: rgba(0, 212, 255, 0.08);
+            color: #d4a574;
+            background: rgba(212, 165, 116, 0.08);
         }
 
         .nav-links a:hover::after {
@@ -159,8 +160,8 @@
         }
 
         .nav-links a.active {
-            color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
+            color: #d4a574;
+            background: rgba(212, 165, 116, 0.1);
         }
 
         .nav-links a.active::after {
@@ -173,20 +174,45 @@
 
         /* CTA Button in navbar */
         .nav-links a.nav-cta {
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             color: white;
             border-radius: 25px;
             padding: 12px 24px;
             margin-left: 10px;
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3), 0 4px 20px rgba(143, 87, 41, 0.2);
+            border: none;
+            font-weight: 600;
         }
 
         .nav-links a.nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5), 0 8px 30px rgba(255, 0, 128, 0.3);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5), 0 8px 30px rgba(143, 87, 41, 0.3);
+            background: linear-gradient(135deg, #e5c49a 0%, #a86c3f 100%);
         }
 
         .nav-links a.nav-cta::after {
+            display: none;
+        }
+
+        /* App Button in navbar */
+        .nav-links a.nav-app {
+            background: transparent;
+            color: #d4a574;
+            border-radius: 25px;
+            padding: 12px 24px;
+            margin-left: 10px;
+            border: 2px solid #d4a574;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a.nav-app:hover {
+            transform: translateY(-2px);
+            background: rgba(212, 165, 116, 0.1);
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
+        }
+
+        .nav-links a.nav-app::after {
             display: none;
         }
 
@@ -199,7 +225,7 @@
         }
 
         .mobile-menu:hover {
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(212, 165, 116, 0.1);
         }
 
         .mobile-menu i {
@@ -242,7 +268,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.5), transparent);
         }
 
         .page-hero::after {
@@ -253,7 +279,7 @@
             transform: translate(-50%, -50%);
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -261,7 +287,7 @@
             font-size: 3em;
             margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+            text-shadow: 0 0 40px rgba(212, 165, 116, 0.3);
             position: relative;
             z-index: 1;
         }
@@ -298,13 +324,13 @@
 
         .service-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 212, 255, 0.1);
-            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 165, 116, 0.1);
+            border-color: rgba(212, 165, 116, 0.2);
         }
 
         .service-icon {
             font-size: 2.5em;
-            color: #00d4ff;
+            color: #d4a574;
             margin-right: 30px;
             min-width: 80px;
             height: 80px;
@@ -312,16 +338,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(212, 165, 116, 0.1);
             border-radius: 50%;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(212, 165, 116, 0.2);
             transition: all 0.4s ease;
         }
 
         .service-item:hover .service-icon {
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             color: white;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.4);
             border-color: transparent;
             transform: rotate(5deg) scale(1.1);
         }
@@ -358,7 +384,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.5), transparent);
+            background: linear-gradient(90deg, transparent, rgba(143, 87, 41, 0.5), transparent);
         }
 
         .cta-section::after {
@@ -369,7 +395,7 @@
             transform: translate(-50%, -50%);
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(255, 0, 128, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(143, 87, 41, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -394,7 +420,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             color: white;
             padding: 18px 45px;
             text-decoration: none;
@@ -402,14 +428,14 @@
             font-size: 1.1em;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 4px 25px rgba(212, 165, 116, 0.4);
             position: relative;
             z-index: 1;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5), 0 8px 40px rgba(255, 0, 128, 0.3);
+            box-shadow: 0 8px 40px rgba(212, 165, 116, 0.5), 0 8px 40px rgba(143, 87, 41, 0.3);
         }
 
         .cta-button i {
@@ -503,7 +529,7 @@
             width: 280px;
             max-width: 85vw;
             background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%) !important;
-            border-right: 1px solid rgba(0, 212, 255, 0.2);
+            border-right: 1px solid rgba(212, 165, 116, 0.2);
         }
         
         #mySidebar .w3-bar-item {
@@ -515,12 +541,12 @@
         }
 
         #mySidebar .w3-bar-item:hover {
-            background: rgba(0, 212, 255, 0.1) !important;
-            color: #00d4ff !important;
+            background: rgba(212, 165, 116, 0.1) !important;
+            color: #d4a574 !important;
         }
 
         #mySidebar .sidebar-cta {
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%) !important;
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%) !important;
             color: white !important;
             margin: 16px;
             border-radius: 25px;
@@ -556,6 +582,7 @@
                 <a href="index.html#work">Projekty</a>
                 <a href="sprava-budov.html" class="active">Správa budov</a>
                 <a href="index.html#contact" class="nav-cta"><i class="fa fa-envelope"></i> Kontakt</a>
+                <a href="#" class="nav-app"><i class="fa fa-mobile"></i> App</a>
             </nav>
             <div class="mobile-menu" onclick="toggleMobileMenu()">
                 <i class="fa fa-bars"></i>
@@ -566,12 +593,13 @@
     <!-- Sidebar on small screens -->
     <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large"
         style="display:none" id="mySidebar">
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16" style="color: #00d4ff !important;">Zavrieť ×</a>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16" style="color: #d4a574 !important;">Zavrieť ×</a>
         <a href="index.html#about" onclick="w3_close()" class="w3-bar-item w3-button">O nás</a>
         <a href="index.html#team" onclick="w3_close()" class="w3-bar-item w3-button">Služby</a>
         <a href="index.html#work" onclick="w3_close()" class="w3-bar-item w3-button">Projekty</a>
-        <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #00d4ff !important;">Správa budov</a>
+        <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #d4a574 !important;">Správa budov</a>
         <a href="index.html#contact" onclick="w3_close()" class="w3-bar-item w3-button sidebar-cta">Kontakt</a>
+        <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #d4a574; border: 2px solid #d4a574; margin: 16px; border-radius: 25px; text-align: center;">App</a>
     </nav>
 
     <!-- Page Hero -->
@@ -671,8 +699,8 @@
             var navbar = document.querySelector('.custom-navbar');
             if (window.scrollY > 50) {
                 navbar.style.background = 'rgba(10, 10, 15, 0.98)';
-                navbar.style.boxShadow = '0 4px 30px rgba(0, 212, 255, 0.1)';
-                navbar.style.borderBottom = '1px solid rgba(0, 212, 255, 0.1)';
+                navbar.style.boxShadow = '0 4px 30px rgba(212, 165, 116, 0.1)';
+                navbar.style.borderBottom = '1px solid rgba(212, 165, 116, 0.1)';
             } else {
                 navbar.style.background = 'rgba(10, 10, 15, 0.85)';
                 navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';

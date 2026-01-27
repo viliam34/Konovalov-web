@@ -856,7 +856,8 @@
             justify-content: space-between;
             align-items: center;
             height: 80px;
-            padding: 0 40px;
+            padding: 0 40px 0 40px;
+            padding-right: 1em;
             margin: 0 auto;
             max-width: 1400px;
         }
@@ -955,6 +956,28 @@
         }
 
         .nav-links a.nav-cta::after {
+            display: none;
+        }
+
+        /* App Button in navbar */
+        .nav-links a.nav-app {
+            background: transparent;
+            color: #d4a574;
+            border-radius: 25px;
+            padding: 12px 24px;
+            margin-left: 10px;
+            border: 2px solid #d4a574;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a.nav-app:hover {
+            transform: translateY(-2px);
+            background: rgba(212, 165, 116, 0.1);
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
+        }
+
+        .nav-links a.nav-app::after {
             display: none;
         }
 
@@ -1426,23 +1449,26 @@
         @media (max-width: 768px) {
             .bgimg-1 {
                 min-height: 100vh;
-                background-position: center right;
+                background-image: none !important; /* Hide hero image on mobile */
+                background-color: #3e230e; /* Match animation background */
             }
             
             /* Full overlay on mobile instead of diagonal */
             .bgimg-1::before {
                 width: 100%;
                 clip-path: none;
-                background: linear-gradient(180deg, 
-                    rgba(10, 10, 15, 0.92) 0%, 
-                    rgba(10, 10, 15, 0.85) 40%,
-                    rgba(10, 10, 15, 0.7) 70%,
-                    rgba(10, 10, 15, 0.5) 100%);
+                background: transparent;
             }
             
             /* Hide the diagonal accent line on mobile */
             .bgimg-1::after {
                 display: none;
+            }
+            
+            /* Make animation cover full screen on mobile */
+            .low-poly-bg {
+                width: 100% !important;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
             }
             
             .bgimg-1 .w3-display-left {
@@ -1713,6 +1739,7 @@
                 <a href="#work">Projekty</a>
                 <a href="sprava-budov.html">Správa budov</a>
                 <a href="#contact" class="nav-cta"><i class="fa fa-envelope"></i> Kontakt</a>
+                <a href="#" class="nav-app"><i class="fa fa-mobile"></i> App</a>
             </nav>
             <div class="mobile-menu" onclick="toggleMobileMenu()">
                 <i class="fa fa-bars"></i>
@@ -1729,6 +1756,7 @@
         <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Projekty</a>
         <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Správa budov</a>
         <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button" style="background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%); color: white; margin: 16px; border-radius: 25px;">Kontakt</a>
+        <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #d4a574; border: 2px solid #d4a574; margin: 16px; border-radius: 25px; text-align: center;">App</a>
     </nav>
 
     <!-- Header with full-height image -->
