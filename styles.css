@@ -1,20 +1,110 @@
 /* =====================================================
-   MODERN DARK THEME - VIVID DESIGN
+   MODERN ALTERNATING THEME - LIGHT/DARK SECTIONS
    ===================================================== */
 
 :root {
     --bg-primary: #0a0a0f;
     --bg-secondary: #12121a;
     --bg-tertiary: #1a1a25;
+    --bg-light: #ffffff;
+    --bg-light-secondary: #f8f9fa;
+    --bg-light-tertiary: #f0f2f5;
     --accent-cyan: #00d4ff;
     --accent-magenta: #ff0080;
     --accent-purple: #7c3aed;
     --text-primary: #ffffff;
     --text-secondary: #a0a0b0;
+    --text-dark: #1a1a2e;
+    --text-dark-secondary: #4a4a6a;
     --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
     --gradient-accent-reverse: linear-gradient(135deg, #ff0080 0%, #00d4ff 100%);
     --glow-cyan: 0 0 30px rgba(0, 212, 255, 0.4);
     --glow-magenta: 0 0 30px rgba(255, 0, 128, 0.4);
+}
+
+/* Geometric Background Animations */
+@keyframes floatShape {
+    0%, 100% { transform: rotate(-15deg) translateY(0); }
+    50% { transform: rotate(-10deg) translateY(-30px); }
+}
+
+@keyframes floatShape2 {
+    0%, 100% { transform: rotate(20deg) translateX(0); }
+    50% { transform: rotate(25deg) translateX(20px); }
+}
+
+/* Light Section Base */
+.section-light {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-light::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: -15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.section-light::after {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 0, 128, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.section-light > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Dark Section Base */
+.section-dark {
+    background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-dark::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 60%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.section-dark::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(255, 0, 128, 0.08) 0%, transparent 60%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.section-dark > * {
+    position: relative;
+    z-index: 1;
 }
 
 body {

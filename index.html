@@ -31,7 +31,7 @@
 
         /* Selection styling */
         ::selection {
-            background: rgba(0, 212, 255, 0.3);
+            background: rgba(212, 165, 116, 0.4);
             color: #fff;
         }
 
@@ -45,12 +45,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #00d4ff, #ff0080);
+            background: linear-gradient(180deg, #d4a574, #8f5729);
             border-radius: 5px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #00e5ff, #ff1a8c);
+            background: linear-gradient(180deg, #e5c49a, #a86c3f);
         }
 
         /* CSS Variables for easy theming */
@@ -58,15 +58,687 @@
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
             --bg-tertiary: #1a1a25;
-            --accent-cyan: #00d4ff;
-            --accent-magenta: #ff0080;
-            --accent-purple: #7c3aed;
+            --bg-light: #ffffff;
+            --bg-light-secondary: #f8f9fa;
+            --bg-light-tertiary: #f0f2f5;
+            --accent-cyan: #d4a574;
+            --accent-magenta: #8f5729;
+            --accent-purple: #6b3f1c;
             --text-primary: #ffffff;
             --text-secondary: #a0a0b0;
-            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
-            --gradient-accent-reverse: linear-gradient(135deg, #ff0080 0%, #00d4ff 100%);
-            --glow-cyan: 0 0 30px rgba(0, 212, 255, 0.4);
-            --glow-magenta: 0 0 30px rgba(255, 0, 128, 0.4);
+            --text-dark: #1a1a2e;
+            --text-dark-secondary: #4a4a6a;
+            --gradient-accent: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
+            --gradient-accent-reverse: linear-gradient(135deg, #8f5729 0%, #d4a574 100%);
+            --glow-cyan: 0 0 30px rgba(212, 165, 116, 0.4);
+            --glow-magenta: 0 0 30px rgba(143, 87, 41, 0.4);
+        }
+
+        /* Geometric Background Shapes */
+        .geometric-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .geometric-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(143, 87, 41, 0.05) 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            transform: rotate(-15deg);
+            z-index: 0;
+            animation: floatShape 20s ease-in-out infinite;
+        }
+
+        .geometric-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, rgba(143, 87, 41, 0.06) 0%, rgba(212, 165, 116, 0.04) 100%);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            transform: rotate(20deg);
+            z-index: 0;
+            animation: floatShape2 25s ease-in-out infinite;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: rotate(-15deg) translateY(0); }
+            50% { transform: rotate(-10deg) translateY(-30px); }
+        }
+
+        @keyframes floatShape2 {
+            0%, 100% { transform: rotate(20deg) translateX(0); }
+            50% { transform: rotate(25deg) translateX(20px); }
+        }
+
+        /* =====================================================
+           GEOMETRIC MESH NETWORK - DARK SECTIONS ONLY
+           ===================================================== */
+        
+        .geometric-mesh {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .geometric-mesh svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Mesh triangles with subtle fill */
+        .mesh-triangle {
+            fill: rgba(255, 255, 255, 0.03);
+            stroke: rgba(255, 255, 255, 0.15);
+            stroke-width: 1;
+            transition: fill 0.3s ease;
+        }
+
+        .mesh-triangle.highlight {
+            fill: rgba(212, 165, 116, 0.08);
+        }
+
+        .mesh-triangle.highlight-magenta {
+            fill: rgba(143, 87, 41, 0.06);
+        }
+
+        /* Mesh lines */
+        .mesh-line {
+            stroke: rgba(255, 255, 255, 0.12);
+            stroke-width: 1;
+        }
+
+        .mesh-line.accent {
+            stroke: rgba(212, 165, 116, 0.25);
+        }
+
+        /* Mesh nodes/dots */
+        .mesh-node {
+            fill: rgba(255, 255, 255, 0.6);
+        }
+
+        .mesh-node.accent {
+            fill: rgba(212, 165, 116, 0.8);
+        }
+
+        .mesh-node.magenta {
+            fill: rgba(143, 87, 41, 0.7);
+        }
+
+        /* Animation for mesh nodes */
+        @keyframes nodePulse {
+            0%, 100% { r: 3; opacity: 0.6; }
+            50% { r: 4; opacity: 1; }
+        }
+
+        .mesh-node.animated {
+            animation: nodePulse 3s ease-in-out infinite;
+        }
+
+        /* Floating animation for mesh nodes */
+        @keyframes nodeFloat1 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(3px, -4px); }
+            50% { transform: translate(-2px, 3px); }
+            75% { transform: translate(4px, 2px); }
+        }
+
+        @keyframes nodeFloat2 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-4px, 2px); }
+            50% { transform: translate(3px, -3px); }
+            75% { transform: translate(-2px, -4px); }
+        }
+
+        @keyframes nodeFloat3 {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(2px, 4px); }
+            50% { transform: translate(-3px, -2px); }
+            75% { transform: translate(3px, -3px); }
+        }
+
+        .mesh-node.float1 {
+            animation: nodeFloat1 8s ease-in-out infinite;
+        }
+
+        .mesh-node.float2 {
+            animation: nodeFloat2 10s ease-in-out infinite;
+        }
+
+        .mesh-node.float3 {
+            animation: nodeFloat3 12s ease-in-out infinite;
+        }
+
+        .mesh-node.animated.float1 {
+            animation: nodePulse 3s ease-in-out infinite, nodeFloat1 8s ease-in-out infinite;
+        }
+
+        .mesh-node.animated.float2 {
+            animation: nodePulse 3s ease-in-out infinite, nodeFloat2 10s ease-in-out infinite;
+        }
+
+        .mesh-node.animated.float3 {
+            animation: nodePulse 3s ease-in-out infinite, nodeFloat3 12s ease-in-out infinite;
+        }
+
+        /* Light sections - hide mesh, keep simple shapes */
+        .geometric-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 1;
+        }
+
+        /* Triangle shapes */
+        .triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .triangle-1 {
+            border-width: 0 50px 87px 50px;
+            border-color: transparent transparent rgba(212, 165, 116, 0.35) transparent;
+            top: 15%;
+            left: 10%;
+            animation: floatTriangle 15s ease-in-out infinite;
+        }
+
+        .triangle-2 {
+            border-width: 0 40px 69px 40px;
+            border-color: transparent transparent rgba(143, 87, 41, 0.25) transparent;
+            top: 60%;
+            right: 15%;
+            animation: floatTriangle 18s ease-in-out infinite reverse;
+        }
+
+        .triangle-3 {
+            border-width: 70px 40px 0 40px;
+            border-color: rgba(107, 63, 28, 0.25) transparent transparent transparent;
+            bottom: 20%;
+            left: 20%;
+            animation: floatTriangle 20s ease-in-out infinite;
+        }
+
+        .triangle-4 {
+            border-width: 0 30px 52px 30px;
+            border-color: transparent transparent rgba(212, 165, 116, 0.2) transparent;
+            top: 40%;
+            right: 8%;
+            animation: rotateShape 25s linear infinite;
+        }
+
+        .triangle-5 {
+            border-width: 45px 26px 0 26px;
+            border-color: rgba(143, 87, 41, 0.2) transparent transparent transparent;
+            top: 75%;
+            left: 5%;
+            animation: floatTriangle 22s ease-in-out infinite;
+        }
+
+        /* Hexagon shapes */
+        .hexagon {
+            width: 80px;
+            height: 46.19px;
+            background: rgba(212, 165, 116, 0.25);
+            position: relative;
+        }
+
+        .hexagon::before,
+        .hexagon::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+        }
+
+        .hexagon::before {
+            bottom: 100%;
+            border-bottom: 23.09px solid rgba(212, 165, 116, 0.25);
+        }
+
+        .hexagon::after {
+            top: 100%;
+            border-top: 23.09px solid rgba(212, 165, 116, 0.25);
+        }
+
+        .hexagon-1 {
+            top: 25%;
+            right: 20%;
+            animation: rotateShape 30s linear infinite;
+        }
+
+        .hexagon-2 {
+            width: 60px;
+            height: 34.64px;
+            background: rgba(143, 87, 41, 0.2);
+            bottom: 30%;
+            left: 15%;
+            animation: floatHexagon 18s ease-in-out infinite;
+        }
+
+        .hexagon-2::before {
+            border-left-width: 30px;
+            border-right-width: 30px;
+            border-bottom: 17.32px solid rgba(143, 87, 41, 0.2);
+        }
+
+        .hexagon-2::after {
+            border-left-width: 30px;
+            border-right-width: 30px;
+            border-top: 17.32px solid rgba(143, 87, 41, 0.2);
+        }
+
+        /* Diamond/Rhombus shapes */
+        .diamond {
+            width: 70px;
+            height: 70px;
+            background: rgba(107, 63, 28, 0.25);
+            transform: rotate(45deg);
+        }
+
+        .diamond-1 {
+            top: 10%;
+            right: 30%;
+            animation: floatDiamond 16s ease-in-out infinite;
+        }
+
+        .diamond-2 {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 165, 116, 0.2);
+            bottom: 15%;
+            right: 25%;
+            animation: floatDiamond 20s ease-in-out infinite reverse;
+        }
+
+        .diamond-3 {
+            width: 55px;
+            height: 55px;
+            background: rgba(143, 87, 41, 0.18);
+            top: 50%;
+            left: 8%;
+            animation: rotateShape 22s linear infinite;
+        }
+
+        /* Circle outlines */
+        .circle-outline {
+            border-radius: 50%;
+            border: 2px solid;
+        }
+
+        .circle-1 {
+            width: 120px;
+            height: 120px;
+            border-color: rgba(212, 165, 116, 0.4);
+            border-width: 3px;
+            top: 20%;
+            left: 25%;
+            animation: pulseCircle 8s ease-in-out infinite;
+        }
+
+        .circle-2 {
+            width: 80px;
+            height: 80px;
+            border-color: rgba(143, 87, 41, 0.35);
+            border-width: 3px;
+            bottom: 25%;
+            right: 10%;
+            animation: pulseCircle 10s ease-in-out infinite reverse;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            border-color: rgba(107, 63, 28, 0.3);
+            border-width: 3px;
+            top: 65%;
+            left: 35%;
+            animation: rotateShape 40s linear infinite;
+        }
+
+        /* Plus/Cross shapes */
+        .plus {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .plus::before,
+        .plus::after {
+            content: '';
+            position: absolute;
+            background: rgba(212, 165, 116, 0.4);
+        }
+
+        .plus::before {
+            width: 100%;
+            height: 10px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .plus::after {
+            width: 10px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .plus-1 {
+            top: 30%;
+            right: 12%;
+            animation: rotateShape 15s linear infinite;
+        }
+
+        .plus-2 {
+            width: 40px;
+            height: 40px;
+            bottom: 40%;
+            left: 30%;
+            animation: rotateShape 20s linear infinite reverse;
+        }
+
+        .plus-2::before { height: 8px; background: rgba(143, 87, 41, 0.35); }
+        .plus-2::after { width: 8px; background: rgba(143, 87, 41, 0.35); }
+
+        /* Pentagon shapes */
+        .pentagon {
+            width: 90px;
+            height: 86px;
+            background: rgba(212, 165, 116, 0.25);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+
+        .pentagon-1 {
+            top: 45%;
+            right: 5%;
+            animation: floatTriangle 17s ease-in-out infinite;
+        }
+
+        .pentagon-2 {
+            width: 70px;
+            height: 67px;
+            background: rgba(143, 87, 41, 0.2);
+            bottom: 35%;
+            left: 12%;
+            animation: rotateShape 35s linear infinite;
+        }
+
+        /* Octagon shapes */
+        .octagon {
+            width: 80px;
+            height: 80px;
+            background: rgba(107, 63, 28, 0.25);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+
+        .octagon-1 {
+            top: 55%;
+            left: 25%;
+            animation: floatDiamond 19s ease-in-out infinite;
+        }
+
+        .octagon-2 {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 165, 116, 0.2);
+            top: 15%;
+            right: 35%;
+            animation: rotateShape 28s linear infinite reverse;
+        }
+
+        /* Arrow/Chevron shapes */
+        .chevron {
+            width: 70px;
+            height: 35px;
+            background: rgba(212, 165, 116, 0.3);
+            clip-path: polygon(0% 0%, 50% 100%, 100% 0%, 80% 0%, 50% 60%, 20% 0%);
+        }
+
+        .chevron-1 {
+            top: 70%;
+            right: 20%;
+            animation: floatTriangle 14s ease-in-out infinite;
+        }
+
+        .chevron-2 {
+            width: 55px;
+            height: 28px;
+            background: rgba(143, 87, 41, 0.25);
+            top: 25%;
+            left: 40%;
+            transform: rotate(180deg);
+            animation: floatTriangle 16s ease-in-out infinite reverse;
+        }
+
+        /* Square with rounded corners */
+        .rounded-square {
+            width: 60px;
+            height: 60px;
+            background: transparent;
+            border: 4px solid rgba(212, 165, 116, 0.4);
+            border-radius: 12px;
+        }
+
+        .rounded-square-1 {
+            top: 80%;
+            left: 45%;
+            animation: rotateShape 25s linear infinite;
+        }
+
+        .rounded-square-2 {
+            width: 45px;
+            height: 45px;
+            border-color: rgba(143, 87, 41, 0.35);
+            border-width: 3px;
+            top: 35%;
+            right: 40%;
+            animation: pulseCircle 12s ease-in-out infinite;
+        }
+
+        /* Dot grid pattern */
+        .dots-pattern {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-image: radial-gradient(rgba(212, 165, 116, 0.5) 3px, transparent 3px);
+            background-size: 25px 25px;
+        }
+
+        .dots-1 {
+            top: 5%;
+            right: 5%;
+            opacity: 0.8;
+            animation: fadeInOut 10s ease-in-out infinite;
+        }
+
+        .dots-2 {
+            bottom: 10%;
+            left: 2%;
+            width: 200px;
+            height: 200px;
+            background-image: radial-gradient(rgba(143, 87, 41, 0.4) 3px, transparent 3px);
+            opacity: 0.7;
+            animation: fadeInOut 12s ease-in-out infinite reverse;
+        }
+
+        /* Line decorations */
+        .line-decoration {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.6), transparent);
+        }
+
+        .line-1 {
+            width: 200px;
+            top: 35%;
+            left: 5%;
+            transform: rotate(-30deg);
+            animation: lineGlow 5s ease-in-out infinite;
+        }
+
+        .line-2 {
+            width: 150px;
+            bottom: 20%;
+            right: 8%;
+            transform: rotate(45deg);
+            background: linear-gradient(90deg, transparent, rgba(143, 87, 41, 0.5), transparent);
+            animation: lineGlow 6s ease-in-out infinite reverse;
+        }
+
+        /* Animations for geometric shapes */
+        @keyframes floatTriangle {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(-25px) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(-5deg); }
+        }
+
+        @keyframes floatHexagon {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            33% { transform: translateY(-20px) translateX(10px); }
+            66% { transform: translateY(-10px) translateX(-5px); }
+        }
+
+        @keyframes floatDiamond {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(-20px); }
+        }
+
+        @keyframes rotateShape {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseCircle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.6; }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Dark section specific shape colors - BRIGHTER */
+        .section-dark .triangle-1 { border-color: transparent transparent rgba(212, 165, 116, 0.4) transparent; }
+        .section-dark .triangle-2 { border-color: transparent transparent rgba(143, 87, 41, 0.35) transparent; }
+        .section-dark .triangle-4 { border-color: transparent transparent rgba(212, 165, 116, 0.3) transparent; }
+        .section-dark .triangle-5 { border-color: rgba(143, 87, 41, 0.3) transparent transparent transparent; }
+        .section-dark .diamond { background: rgba(107, 63, 28, 0.35); }
+        .section-dark .hexagon { background: rgba(212, 165, 116, 0.35); }
+        .section-dark .hexagon::before { border-bottom-color: rgba(212, 165, 116, 0.35); }
+        .section-dark .hexagon::after { border-top-color: rgba(212, 165, 116, 0.35); }
+        .section-dark .circle-outline { border-width: 3px; }
+        .section-dark .plus::before,
+        .section-dark .plus::after { background: rgba(212, 165, 116, 0.5); }
+        .section-dark .pentagon { background: rgba(212, 165, 116, 0.35); }
+        .section-dark .octagon { background: rgba(107, 63, 28, 0.35); }
+
+        /* Light Section Styles */
+        .section-light {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-light::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .section-light::after {
+            content: '';
+            position: absolute;
+            bottom: 5%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(143, 87, 41, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .section-light > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Dark Section Styles */
+        .section-dark {
+            background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-dark::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 60%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .section-dark::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(143, 87, 41, 0.08) 0%, transparent 60%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .section-dark > * {
+            position: relative;
+            z-index: 1;
         }
 
         /* Animated gradient border effect */
@@ -84,8 +756,8 @@
 
         /* Glow pulse animation */
         @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 60px rgba(255, 0, 128, 0.3); }
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 165, 116, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 165, 116, 0.6), 0 0 60px rgba(143, 87, 41, 0.3); }
         }
 
         /* Full height image header */
@@ -105,10 +777,7 @@
             left: 0;
             width: 70%;
             height: 100%;
-            background: linear-gradient(135deg, 
-                rgba(10, 10, 15, 0.98) 0%, 
-                rgba(18, 18, 26, 0.95) 50%,
-                rgba(26, 26, 37, 0.85) 100%);
+            background: transparent;
             clip-path: polygon(0 0, 95% 0, 70% 100%, 0 100%);
             z-index: 1;
         }
@@ -121,10 +790,10 @@
             left: 0;
             width: 70%;
             height: 100%;
-            background: linear-gradient(135deg, transparent 0%, transparent 95%, #00d4ff 100%);
+            background: linear-gradient(135deg, transparent 0%, transparent 95%, #d4a574 100%);
             clip-path: polygon(88% 0, 95% 0, 70% 100%, 63% 100%);
             z-index: 2;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         /* Ensure text appears above overlay */
@@ -178,8 +847,8 @@
 
         .custom-navbar.scrolled {
             background: rgba(10, 10, 15, 0.98);
-            box-shadow: 0 4px 30px rgba(0, 212, 255, 0.1);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(212, 165, 116, 0.1);
+            border-bottom: 1px solid rgba(212, 165, 116, 0.1);
         }
 
         .navbar-container {
@@ -247,15 +916,15 @@
             transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             transition: width 0.3s ease;
             border-radius: 2px;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
         }
 
         .nav-links a:hover {
-            color: #00d4ff;
-            background: rgba(0, 212, 255, 0.08);
+            color: #d4a574;
+            background: rgba(212, 165, 116, 0.08);
         }
 
         .nav-links a:hover::after {
@@ -269,20 +938,20 @@
 
         /* CTA Button in navbar */
         .nav-links a.nav-cta {
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             color: white;
             border-radius: 25px;
             padding: 12px 24px;
             margin-left: 10px;
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3), 0 4px 20px rgba(255, 0, 128, 0.2);
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3), 0 4px 20px rgba(143, 87, 41, 0.2);
             border: none;
             font-weight: 600;
         }
 
         .nav-links a.nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5), 0 8px 30px rgba(255, 0, 128, 0.3);
-            background: linear-gradient(135deg, #00e5ff 0%, #ff1a8c 100%);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5), 0 8px 30px rgba(143, 87, 41, 0.3);
+            background: linear-gradient(135deg, #e5c49a 0%, #a86c3f 100%);
         }
 
         .nav-links a.nav-cta::after {
@@ -298,7 +967,7 @@
         }
 
         .mobile-menu:hover {
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(212, 165, 116, 0.1);
         }
 
         .mobile-menu i {
@@ -352,29 +1021,50 @@
         /* Modern Services Section Styles */
         .services-section {
             padding: 100px 20px;
-            background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+            background: #ffffff;
             position: relative;
+            overflow: hidden;
         }
 
         .services-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            top: 5%;
+            right: -15%;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(107, 63, 28, 0.05) 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            transform: rotate(-15deg);
+            z-index: 0;
+            animation: floatShape 20s ease-in-out infinite;
+        }
+
+        .services-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, rgba(143, 87, 41, 0.08) 0%, rgba(212, 165, 116, 0.04) 100%);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            transform: rotate(20deg);
+            z-index: 0;
+            animation: floatShape2 25s ease-in-out infinite;
         }
 
         .services-header {
             text-align: center;
             max-width: 700px;
             margin: 0 auto 60px;
+            position: relative;
+            z-index: 1;
         }
 
         .services-header h2 {
             font-size: 2.5em;
-            color: #ffffff;
+            color: #1a1a2e;
             margin-bottom: 20px;
             font-weight: 600;
             position: relative;
@@ -389,13 +1079,12 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             border-radius: 3px;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
         }
 
         .services-header p {
-            color: #a0a0b0;
+            color: #4a4a6a;
             font-size: 1.15em;
             line-height: 1.7;
             margin-top: 25px;
@@ -407,20 +1096,20 @@
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card {
-            background: rgba(26, 26, 37, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: #ffffff;
             border-radius: 20px;
             padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .service-card::before {
@@ -430,15 +1119,15 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 212, 255, 0.1);
-            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(212, 165, 116, 0.1);
+            border-color: rgba(212, 165, 116, 0.3);
         }
 
         .service-card:hover::before {
@@ -449,25 +1138,25 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 25px;
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(212, 165, 116, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.4s ease;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(212, 165, 116, 0.2);
         }
 
         .service-card:hover .service-icon-wrapper {
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.4);
             border-color: transparent;
         }
 
         .service-icon-wrapper i {
             font-size: 32px;
-            color: #00d4ff;
+            color: #d4a574;
             transition: all 0.4s ease;
         }
 
@@ -477,13 +1166,13 @@
 
         .service-card h3 {
             font-size: 1.3em;
-            color: #ffffff;
+            color: #1a1a2e;
             margin-bottom: 15px;
             font-weight: 600;
         }
 
         .service-card p {
-            color: #a0a0b0;
+            color: #4a4a6a;
             font-size: 0.95em;
             line-height: 1.7;
             margin-bottom: 20px;
@@ -492,7 +1181,7 @@
         .service-card .service-link {
             display: inline-flex;
             align-items: center;
-            color: #00d4ff;
+            color: #d4a574;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9em;
@@ -505,8 +1194,8 @@
         }
 
         .service-card:hover .service-link {
-            color: #ff0080;
-            text-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+            color: #8f5729;
+            text-shadow: 0 0 10px rgba(143, 87, 41, 0.5);
         }
 
         .service-card:hover .service-link i {
@@ -554,13 +1243,13 @@
         .contact-info h3 {
             font-size: 2.5em;
             margin-bottom: 30px;
-            color: #ffffff;
+            color: #1a1a2e;
         }
 
         .contact-info p {
             font-size: 1.1em;
             line-height: 1.6;
-            color: #a0a0b0;
+            color: #4a4a6a;
             margin-bottom: 40px;
         }
 
@@ -575,26 +1264,25 @@
             align-items: center;
             margin-bottom: 20px;
             font-size: 1em;
-            color: #e0e0e0;
+            color: #1a1a2e;
             font-weight: bold;
         }
 
         .contact-details i {
             margin-right: 15px;
-            color: #00d4ff;
+            color: #d4a574;
             width: 35px;
             font-size: 2em;
-            filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+            filter: drop-shadow(0 0 8px rgba(212, 165, 116, 0.3));
         }
 
         .contact-form {
             flex: 1;
-            background: rgba(26, 26, 37, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: #ffffff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             padding: 40px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .contact-form .form-group {
@@ -604,7 +1292,7 @@
         .contact-form label {
             display: block;
             margin-bottom: 8px;
-            color: #e0e0e0;
+            color: #1a1a2e;
             font-weight: 500;
         }
 
@@ -612,20 +1300,21 @@
         .contact-form textarea {
             width: 100%;
             padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             font-size: 1em;
             box-sizing: border-box;
-            background: rgba(0, 0, 0, 0.3);
-            color: #ffffff;
+            background: #f8f9fa;
+            color: #1a1a2e;
             transition: all 0.3s ease;
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
-            border-color: #00d4ff;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            border-color: #d4a574;
+            box-shadow: 0 0 20px rgba(212, 165, 116, 0.15);
+            background: #ffffff;
         }
 
         .contact-form textarea {
@@ -634,7 +1323,7 @@
         }
 
         .contact-form button {
-            background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
             color: white;
             padding: 15px 30px;
             border: none;
@@ -643,12 +1332,12 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
         }
 
         .contact-form button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5), 0 8px 30px rgba(255, 0, 128, 0.3);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5), 0 8px 30px rgba(143, 87, 41, 0.3);
         }
 
         /* Custom File Input Styling */
@@ -674,8 +1363,8 @@
             align-items: center;
             justify-content: center;
             padding: 30px 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 2px dashed rgba(0, 212, 255, 0.3);
+            background: #f8f9fa;
+            border: 2px dashed rgba(212, 165, 116, 0.4);
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -683,31 +1372,30 @@
         }
 
         .file-input-label:hover {
-            border-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.05);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+            border-color: #d4a574;
+            background: rgba(212, 165, 116, 0.05);
+            box-shadow: 0 0 20px rgba(212, 165, 116, 0.1);
         }
 
         .file-input-label i {
             font-size: 2.5em;
-            color: #00d4ff;
+            color: #d4a574;
             margin-bottom: 10px;
             transition: all 0.3s ease;
         }
 
         .file-input-label:hover i {
             transform: translateY(-5px);
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
         }
 
         .file-input-label span {
-            color: #a0a0b0;
+            color: #4a4a6a;
             font-size: 0.95em;
         }
 
         .file-input-wrapper input[type="file"]:focus + .file-input-label {
-            border-color: #00d4ff;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            border-color: #d4a574;
+            box-shadow: 0 0 20px rgba(212, 165, 116, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -768,7 +1456,7 @@
             .bgimg-1 .w3-jumbo {
                 font-size: 2.4em !important;
                 line-height: 1.2;
-                text-shadow: 0 0 40px rgba(0, 212, 255, 0.4), 0 4px 20px rgba(0, 0, 0, 0.5);
+                text-shadow: 0 0 40px rgba(212, 165, 116, 0.4), 0 4px 20px rgba(0, 0, 0, 0.5);
             }
             
             .bgimg-1 .w3-large {
@@ -1034,29 +1722,79 @@
 
     <!-- Mobile Sidebar -->
     <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large"
-        style="display:none; background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%); border-right: 1px solid rgba(0, 212, 255, 0.2);" id="mySidebar">
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16" style="color: #00d4ff;">Zavrieť ×</a>
+        style="display:none; background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%); border-right: 1px solid rgba(212, 165, 116, 0.2);" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16" style="color: #d4a574;">Zavrieť ×</a>
         <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">O nás</a>
         <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Služby</a>
         <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Projekty</a>
         <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Správa budov</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button" style="background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%); color: white; margin: 16px; border-radius: 25px;">Kontakt</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button" style="background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%); color: white; margin: 16px; border-radius: 25px;">Kontakt</a>
     </nav>
 
     <!-- Header with full-height image -->
     <header class="bgimg-1 w3-display-container" id="home">
+        <!-- Sliding diagonal panels - inspired by Chris Smith -->
+        <div class="low-poly-bg" style="position: absolute; top: 0; left: 0; width: 70%; height: 100%; z-index: 1; clip-path: polygon(0 0, 95% 0, 70% 100%, 0 100%); overflow: hidden; background: #3e230e;">
+            
+            <style>
+                @keyframes slidePanel1 {
+                    0% { transform: translateX(-100%) skewX(-15deg); }
+                    100% { transform: translateX(200%) skewX(-15deg); }
+                }
+                @keyframes slidePanel2 {
+                    0% { transform: translateX(200%) skewX(15deg); }
+                    100% { transform: translateX(-100%) skewX(15deg); }
+                }
+                @keyframes slidePanel3 {
+                    0% { transform: translateX(-150%) skewX(-20deg); }
+                    100% { transform: translateX(250%) skewX(-20deg); }
+                }
+                @keyframes slidePanel4 {
+                    0% { transform: translateX(250%) skewX(10deg); }
+                    100% { transform: translateX(-150%) skewX(10deg); }
+                }
+                .slide-panel {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                }
+            </style>
+            
+            <!-- Large sliding panels - different directions and speeds -->
+            <div class="slide-panel" style="background: linear-gradient(135deg, rgba(212,165,116,0.4) 0%, rgba(212,165,116,0) 100%); animation: slidePanel1 8s ease-in-out infinite;"></div>
+            <div class="slide-panel" style="background: linear-gradient(135deg, rgba(181,127,82,0.35) 0%, rgba(181,127,82,0) 100%); animation: slidePanel2 10s ease-in-out infinite 1s;"></div>
+            <div class="slide-panel" style="background: linear-gradient(135deg, rgba(245,230,211,0.25) 0%, rgba(245,230,211,0) 100%); animation: slidePanel3 12s ease-in-out infinite 2s;"></div>
+            <div class="slide-panel" style="background: linear-gradient(135deg, rgba(201,151,106,0.3) 0%, rgba(201,151,106,0) 100%); animation: slidePanel4 9s ease-in-out infinite 0.5s;"></div>
+            
+            <!-- Second layer - offset timing -->
+            <div class="slide-panel" style="background: linear-gradient(-45deg, rgba(143,87,41,0.3) 0%, rgba(143,87,41,0) 100%); animation: slidePanel1 11s ease-in-out infinite 3s;"></div>
+            <div class="slide-panel" style="background: linear-gradient(-45deg, rgba(168,108,63,0.25) 0%, rgba(168,108,63,0) 100%); animation: slidePanel2 7s ease-in-out infinite 4s;"></div>
+            <div class="slide-panel" style="background: linear-gradient(-45deg, rgba(219,184,150,0.2) 0%, rgba(219,184,150,0) 100%); animation: slidePanel3 14s ease-in-out infinite 5s;"></div>
+            <div class="slide-panel" style="background: linear-gradient(-45deg, rgba(122,74,34,0.35) 0%, rgba(122,74,34,0) 100%); animation: slidePanel4 13s ease-in-out infinite 2.5s;"></div>
+            
+            <!-- Third layer - more subtle -->
+            <div class="slide-panel" style="background: linear-gradient(90deg, rgba(236,220,200,0.15) 0%, transparent 50%, rgba(236,220,200,0.15) 100%); animation: slidePanel1 16s ease-in-out infinite 6s;"></div>
+            <div class="slide-panel" style="background: linear-gradient(90deg, rgba(92,53,22,0.2) 0%, transparent 50%, rgba(92,53,22,0.2) 100%); animation: slidePanel2 15s ease-in-out infinite 7s;"></div>
+        </div>
+        
         <div class="w3-display-left w3-text-white hero-content" style="position: absolute; top: 50%; left: 48px; transform: translateY(-50%); z-index: 100; color: white !important; max-width: 550px;">
-            <span class="w3-jumbo w3-hide-small hero-text" style="color: white !important; z-index: 100; text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);">Poďme budovať!</span><br>
+            <span class="w3-jumbo w3-hide-small hero-text" style="color: white !important; z-index: 100; text-shadow: 0 0 40px rgba(212, 165, 116, 0.4);">Poďme budovať!</span><br>
             <span class="w3-xxlarge w3-hide-large w3-hide-medium hero-text" style="color: white !important; z-index: 100;">Pusťte sa s nami do Vašej vysnívanej stavby</span><br>
             <span class="w3-large hero-text" style="color: rgba(255,255,255,0.85) !important; z-index: 100;">Pusťte sa s nami do Vašej vysnívanej stavby</span>
             <p><a href="#team"
-                    class="w3-button w3-padding-large w3-large w3-margin-top" style="z-index: 101; position: relative; display: inline-block; margin-top: 20px; background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%); color: white; border-radius: 30px; box-shadow: 0 4px 25px rgba(0, 212, 255, 0.4); transition: all 0.3s ease; border: none;"> Naše služby
+                    class="w3-button w3-padding-large w3-large w3-margin-top" style="z-index: 101; position: relative; display: inline-block; margin-top: 20px; background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%); color: white; border-radius: 30px; box-shadow: 0 4px 25px rgba(212, 165, 116, 0.4); transition: all 0.3s ease; border: none;"> Naše služby
                     </a></p>
         </div>
 
     </header>
     <!-- Services Section -->
     <section class="services-section" id="team">
+        <!-- Full background dots pattern -->
+        <div class="services-dots-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(212, 165, 116, 0.35) 4px, transparent 4px); background-size: 40px 40px; pointer-events: none; z-index: 0;"></div>
+        
         <div class="services-header">
             <h2>Ponúkané služby</h2>
             <p>Pre bližšie informácie k jednotlivým službám neváhajte a kontaktujte nás. Sme tu, aby sme vám pomohli s každým krokom vašej stavby.</p>
@@ -1129,66 +1867,267 @@
     </section>
 
         <!-- Work Section -->
-        <div class="w3-container" style="padding:128px 16px; background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);" id="work">
-            <h3 class="w3-center" style="color: #ffffff; font-size: 2.2em;">Dokončené projekty</h3>
-            <p class="w3-center w3-large" style="color: #a0a0b0;">Prezrite si galériu našich realizácií</p>
+        <div class="w3-container section-dark" style="padding:128px 16px;" id="work">
+            <!-- Geometric Mesh - Bottom 40% Wavy Landscape -->
+            <div class="geometric-mesh">
+                <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                    <!-- Wavy landscape mesh in bottom 40% (starting around y=650) -->
+                    
+                    <!-- Top wave line - mountain/hill silhouette -->
+                    <!-- Peak 1 -->
+                    <polygon class="mesh-triangle" points="0,720 150,660 100,780"/>
+                    <polygon class="mesh-triangle highlight" points="150,660 280,600 220,740"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="280,600 380,680 320,780"/>
+                    
+                    <!-- Valley 1 -->
+                    <polygon class="mesh-triangle" points="320,720 420,680 380,800"/>
+                    <polygon class="mesh-triangle highlight" points="380,680 480,720 420,800"/>
+                    
+                    <!-- Peak 2 -->
+                    <polygon class="mesh-triangle" points="480,720 600,580 550,760"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="600,580 720,650 660,780"/>
+                    <polygon class="mesh-triangle highlight" points="720,650 820,560 780,720"/>
+                    
+                    <!-- Valley 2 -->
+                    <polygon class="mesh-triangle" points="780,680 900,680 840,770"/>
+                    <polygon class="mesh-triangle" points="820,560 920,680 880,780"/>
+                    <polygon class="mesh-triangle highlight" points="920,680 1020,620 980,800"/>
+                    
+                    <!-- Peak 3 -->
+                    <polygon class="mesh-triangle highlight-magenta" points="1020,620 1150,540 1100,720"/>
+                    <polygon class="mesh-triangle" points="1150,540 1280,620 1200,760"/>
+                    <polygon class="mesh-triangle highlight" points="1280,620 1380,560 1340,740"/>
+                    
+                    <!-- Valley 3 -->
+                    <polygon class="mesh-triangle" points="1340,700 1450,700 1400,780"/>
+                    <polygon class="mesh-triangle" points="1380,560 1480,680 1420,780"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1480,680 1580,600 1540,760"/>
+                    
+                    <!-- Peak 4 -->
+                    <polygon class="mesh-triangle highlight" points="1580,600 1700,520 1650,720"/>
+                    <polygon class="mesh-triangle" points="1700,520 1820,600 1760,740"/>
+                    <polygon class="mesh-triangle highlight" points="1820,600 1920,560 1920,720"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1760,680 1880,680 1820,760"/>
+                    
+                    <!-- Second row - middle terrain with triangles only -->
+                    <polygon class="mesh-triangle highlight" points="0,780 160,780 80,870"/>
+                    <polygon class="mesh-triangle" points="0,780 100,780 50,870"/>
+                    <polygon class="mesh-triangle" points="100,780 220,740 160,880"/>
+                    <polygon class="mesh-triangle" points="160,820 300,820 230,890"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="220,740 320,780 280,890"/>
+                    <polygon class="mesh-triangle" points="320,780 420,800 380,900"/>
+                    <polygon class="mesh-triangle highlight" points="380,840 520,840 450,920"/>
+                    <polygon class="mesh-triangle" points="420,800 550,760 500,910"/>
+                    <polygon class="mesh-triangle highlight" points="550,760 660,780 620,920"/>
+                    <polygon class="mesh-triangle" points="620,850 760,850 690,920"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="660,780 780,720 740,900"/>
+                    <polygon class="mesh-triangle" points="780,720 880,780 840,920"/>
+                    <polygon class="mesh-triangle" points="840,860 960,860 900,940"/>
+                    <polygon class="mesh-triangle highlight" points="880,780 980,800 940,940"/>
+                    <polygon class="mesh-triangle" points="980,800 1100,720 1050,900"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1050,840 1180,840 1110,920"/>
+                    <polygon class="mesh-triangle highlight" points="1100,720 1200,760 1160,920"/>
+                    <polygon class="mesh-triangle" points="1200,760 1340,740 1280,900"/>
+                    <polygon class="mesh-triangle" points="1280,850 1400,850 1340,920"/>
+                    <polygon class="mesh-triangle highlight" points="1340,740 1420,780 1380,920"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1420,780 1540,760 1480,930"/>
+                    <polygon class="mesh-triangle" points="1480,860 1620,860 1550,940"/>
+                    <polygon class="mesh-triangle" points="1540,760 1650,720 1600,910"/>
+                    <polygon class="mesh-triangle highlight" points="1650,720 1760,740 1700,940"/>
+                    <polygon class="mesh-triangle" points="1700,860 1820,860 1760,940"/>
+                    <polygon class="mesh-triangle" points="1760,740 1920,720 1840,920"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1840,860 1920,860 1880,960"/>
+                    
+                    <!-- Third row - lower terrain -->
+                    <polygon class="mesh-triangle" points="0,870 180,870 90,970"/>
+                    <polygon class="mesh-triangle highlight" points="0,870 50,870 30,970"/>
+                    <polygon class="mesh-triangle" points="50,870 160,880 120,980"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="120,900 280,900 200,990"/>
+                    <polygon class="mesh-triangle" points="160,880 280,890 220,1000"/>
+                    <polygon class="mesh-triangle highlight" points="280,890 380,900 340,1010"/>
+                    <polygon class="mesh-triangle" points="340,920 480,920 410,1000"/>
+                    <polygon class="mesh-triangle" points="380,900 500,910 450,1020"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="500,910 620,920 560,1030"/>
+                    <polygon class="mesh-triangle highlight" points="560,930 720,930 640,1010"/>
+                    <polygon class="mesh-triangle" points="620,920 740,900 680,1020"/>
+                    <polygon class="mesh-triangle" points="740,900 840,920 800,1040"/>
+                    <polygon class="mesh-triangle" points="800,940 920,940 860,1010"/>
+                    <polygon class="mesh-triangle highlight" points="840,920 940,940 900,1050"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="940,940 1050,900 1000,1040"/>
+                    <polygon class="mesh-triangle" points="1000,940 1140,940 1070,1020"/>
+                    <polygon class="mesh-triangle" points="1050,900 1160,920 1100,1050"/>
+                    <polygon class="mesh-triangle highlight" points="1160,920 1280,900 1220,1040"/>
+                    <polygon class="mesh-triangle highlight" points="1220,940 1340,940 1280,1020"/>
+                    <polygon class="mesh-triangle" points="1280,900 1380,920 1330,1060"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1380,920 1480,930 1440,1060"/>
+                    <polygon class="mesh-triangle" points="1440,950 1580,950 1510,1020"/>
+                    <polygon class="mesh-triangle" points="1480,930 1600,910 1540,1050"/>
+                    <polygon class="mesh-triangle highlight" points="1600,910 1700,940 1650,1070"/>
+                    <polygon class="mesh-triangle" points="1650,950 1780,950 1720,1030"/>
+                    <polygon class="mesh-triangle" points="1700,940 1840,920 1780,1060"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1780,960 1900,960 1840,1030"/>
+                    
+                    <!-- Bottom row - base layer -->
+                    <polygon class="mesh-triangle highlight" points="0,970 220,970 110,1080"/>
+                    <polygon class="mesh-triangle" points="0,970 120,980 60,1080"/>
+                    <polygon class="mesh-triangle" points="120,980 220,1000 170,1080"/>
+                    <polygon class="mesh-triangle" points="170,1000 350,1000 260,1080"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="220,1000 340,1010 280,1080"/>
+                    <polygon class="mesh-triangle" points="340,1010 450,1020 400,1080"/>
+                    <polygon class="mesh-triangle highlight" points="400,1010 560,1010 480,1080"/>
+                    <polygon class="mesh-triangle" points="450,1020 560,1030 510,1080"/>
+                    <polygon class="mesh-triangle" points="560,1030 680,1020 620,1080"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="620,1020 780,1020 700,1080"/>
+                    <polygon class="mesh-triangle highlight" points="680,1020 800,1040 740,1080"/>
+                    <polygon class="mesh-triangle" points="800,1040 900,1050 850,1080"/>
+                    <polygon class="mesh-triangle" points="850,1040 980,1040 920,1080"/>
+                    <polygon class="mesh-triangle" points="900,1050 1000,1040 950,1080"/>
+                    <polygon class="mesh-triangle highlight" points="1000,1040 1100,1050 1050,1080"/>
+                    <polygon class="mesh-triangle" points="1050,1040 1200,1040 1130,1080"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1100,1050 1220,1040 1160,1080"/>
+                    <polygon class="mesh-triangle" points="1220,1040 1330,1060 1280,1080"/>
+                    <polygon class="mesh-triangle highlight" points="1280,1050 1420,1050 1350,1080"/>
+                    <polygon class="mesh-triangle" points="1330,1060 1440,1060 1380,1080"/>
+                    <polygon class="mesh-triangle" points="1440,1060 1540,1050 1490,1080"/>
+                    <polygon class="mesh-triangle" points="1490,1050 1630,1050 1560,1080"/>
+                    <polygon class="mesh-triangle highlight-magenta" points="1540,1050 1650,1070 1600,1080"/>
+                    <polygon class="mesh-triangle highlight" points="1650,1070 1780,1060 1720,1080"/>
+                    <polygon class="mesh-triangle" points="1720,1060 1900,1060 1810,1080"/>
+                    <polygon class="mesh-triangle" points="1780,1060 1920,1060 1850,1080"/>
+                    
+                    <!-- Connection lines along the wavy top edge -->
+                    <line class="mesh-line accent" x1="0" y1="720" x2="150" y2="660"/>
+                    <line class="mesh-line" x1="150" y1="660" x2="280" y2="600"/>
+                    <line class="mesh-line accent" x1="280" y1="600" x2="380" y2="680"/>
+                    <line class="mesh-line" x1="380" y1="680" x2="480" y2="720"/>
+                    <line class="mesh-line accent" x1="480" y1="720" x2="600" y2="580"/>
+                    <line class="mesh-line" x1="600" y1="580" x2="720" y2="650"/>
+                    <line class="mesh-line accent" x1="720" y1="650" x2="820" y2="560"/>
+                    <line class="mesh-line" x1="820" y1="560" x2="920" y2="680"/>
+                    <line class="mesh-line accent" x1="920" y1="680" x2="1020" y2="620"/>
+                    <line class="mesh-line" x1="1020" y1="620" x2="1150" y2="540"/>
+                    <line class="mesh-line accent" x1="1150" y1="540" x2="1280" y2="620"/>
+                    <line class="mesh-line" x1="1280" y1="620" x2="1380" y2="560"/>
+                    <line class="mesh-line accent" x1="1380" y1="560" x2="1480" y2="680"/>
+                    <line class="mesh-line" x1="1480" y1="680" x2="1580" y2="600"/>
+                    <line class="mesh-line accent" x1="1580" y1="600" x2="1700" y2="520"/>
+                    <line class="mesh-line" x1="1700" y1="520" x2="1820" y2="600"/>
+                    <line class="mesh-line accent" x1="1820" y1="600" x2="1920" y2="560"/>
+                    
+                    <!-- Vertical connections -->
+                    <line class="mesh-line" x1="150" y1="660" x2="160" y2="880"/>
+                    <line class="mesh-line accent" x1="280" y1="600" x2="280" y2="890"/>
+                    <line class="mesh-line" x1="380" y1="680" x2="380" y2="900"/>
+                    <line class="mesh-line accent" x1="600" y1="580" x2="620" y2="920"/>
+                    <line class="mesh-line" x1="720" y1="650" x2="740" y2="900"/>
+                    <line class="mesh-line accent" x1="820" y1="560" x2="840" y2="920"/>
+                    <line class="mesh-line" x1="920" y1="680" x2="940" y2="940"/>
+                    <line class="mesh-line accent" x1="1020" y1="620" x2="1050" y2="900"/>
+                    <line class="mesh-line" x1="1150" y1="540" x2="1160" y2="920"/>
+                    <line class="mesh-line accent" x1="1280" y1="620" x2="1280" y2="900"/>
+                    <line class="mesh-line" x1="1380" y1="560" x2="1380" y2="920"/>
+                    <line class="mesh-line accent" x1="1480" y1="680" x2="1480" y2="930"/>
+                    <line class="mesh-line" x1="1580" y1="600" x2="1600" y2="910"/>
+                    <line class="mesh-line accent" x1="1700" y1="520" x2="1700" y2="940"/>
+                    <line class="mesh-line" x1="1820" y1="600" x2="1840" y2="920"/>
+                    
+                    <!-- Nodes at peaks and valleys -->
+                    <circle class="mesh-node float1" cx="150" cy="660" r="3"/>
+                    <circle class="mesh-node accent animated float2" cx="280" cy="600" r="4"/>
+                    <circle class="mesh-node magenta float3" cx="380" cy="680" r="4"/>
+                    <circle class="mesh-node float1" cx="480" cy="720" r="3"/>
+                    <circle class="mesh-node accent float2" cx="600" cy="580" r="4"/>
+                    <circle class="mesh-node animated float3" cx="720" cy="650" r="3"/>
+                    <circle class="mesh-node magenta animated float1" cx="820" cy="560" r="4"/>
+                    <circle class="mesh-node float2" cx="920" cy="680" r="3"/>
+                    <circle class="mesh-node accent float3" cx="1020" cy="620" r="4"/>
+                    <circle class="mesh-node magenta float1" cx="1150" cy="540" r="4"/>
+                    <circle class="mesh-node float2" cx="1280" cy="620" r="3"/>
+                    <circle class="mesh-node accent animated float3" cx="1380" cy="560" r="4"/>
+                    <circle class="mesh-node float1" cx="1480" cy="680" r="3"/>
+                    <circle class="mesh-node magenta float2" cx="1580" cy="600" r="4"/>
+                    <circle class="mesh-node accent float3" cx="1700" cy="520" r="4"/>
+                    <circle class="mesh-node animated float1" cx="1820" cy="600" r="3"/>
+                    
+                    <!-- Additional terrain nodes -->
+                    <circle class="mesh-node float2" cx="220" cy="740" r="3"/>
+                    <circle class="mesh-node accent float3" cx="550" cy="760" r="3"/>
+                    <circle class="mesh-node magenta animated float1" cx="660" cy="780" r="4"/>
+                    <circle class="mesh-node float2" cx="880" cy="780" r="3"/>
+                    <circle class="mesh-node accent float3" cx="1100" cy="720" r="3"/>
+                    <circle class="mesh-node float1" cx="1340" cy="740" r="3"/>
+                    <circle class="mesh-node magenta float2" cx="1540" cy="760" r="4"/>
+                    <circle class="mesh-node accent animated float3" cx="1760" cy="740" r="4"/>
+                </svg>
+            </div>
+            
+            <h3 class="w3-center" style="color: #ffffff; font-size: 2.2em; position: relative; z-index: 1;">Dokončené projekty</h3>
+            <p class="w3-center w3-large" style="color: #a0a0b0; position: relative; z-index: 1;">Prezrite si galériu našich realizácií</p>
 
-            <div class="w3-row-padding" style="margin-top:64px">
+            <div class="w3-row-padding" style="margin-top:64px; position: relative; z-index: 1;">
                 <div class="w3-col l3 m6">
                     <img src="01-family-house-trebisov.jpg" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Rodinný dom Trebišov" title="Rodinný dom Trebišov" onmouseover="this.style.boxShadow='0 10px 40px rgba(0, 212, 255, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Rodinný dom Trebišov" title="Rodinný dom Trebišov" onmouseover="this.style.boxShadow='0 10px 40px rgba(212, 165, 116, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
                 <div class="w3-col l3 m6">
                     <img src="02-recreation-cabin-kosice.jpg" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Rekreačná chata Košice" title="Rekreačná chata Košice" onmouseover="this.style.boxShadow='0 10px 40px rgba(255, 0, 128, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Rekreačná chata Košice" title="Rekreačná chata Košice" onmouseover="this.style.boxShadow='0 10px 40px rgba(143, 87, 41, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
                 <div class="w3-col l3 m6">
                     <img src="03-duplex-house-bratislava.png" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Dvojdom Bratislava" title="Dvojdom Bratislava" onmouseover="this.style.boxShadow='0 10px 40px rgba(0, 212, 255, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Dvojdom Bratislava" title="Dvojdom Bratislava" onmouseover="this.style.boxShadow='0 10px 40px rgba(212, 165, 116, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
                 <div class="w3-col l3 m6">
                     <img src="05-family-house-humenne.jpg" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Rodinný dom Humenné" title="Rodinný dom Humenné" onmouseover="this.style.boxShadow='0 10px 40px rgba(255, 0, 128, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Rodinný dom Humenné" title="Rodinný dom Humenné" onmouseover="this.style.boxShadow='0 10px 40px rgba(143, 87, 41, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
             </div>
 
-            <div class="w3-row-padding w3-section">
+            <div class="w3-row-padding w3-section" style="position: relative; z-index: 1;">
                 <div class="w3-col l3 m6">
                     <img src="08-rural-house-hungary.jpg" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Vidiecky dom Maďarsko" title="Vidiecky dom Maďarsko" onmouseover="this.style.boxShadow='0 10px 40px rgba(0, 212, 255, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Vidiecky dom Maďarsko" title="Vidiecky dom Maďarsko" onmouseover="this.style.boxShadow='0 10px 40px rgba(212, 165, 116, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
                 <div class="w3-col l3 m6">
                     <img src="11-hotel s polyfunkciou.jpg" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Hotel s polyfunkciou" title="Hotel s polyfunkciou" onmouseover="this.style.boxShadow='0 10px 40px rgba(255, 0, 128, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Hotel s polyfunkciou" title="Hotel s polyfunkciou" onmouseover="this.style.boxShadow='0 10px 40px rgba(143, 87, 41, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
                 <div class="w3-col l3 m6">
                     <img src="12-family-house-chrastne.jpg" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Rodinný dom Chrastné" title="Rodinný dom Chrastné" onmouseover="this.style.boxShadow='0 10px 40px rgba(0, 212, 255, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Rodinný dom Chrastné" title="Rodinný dom Chrastné" onmouseover="this.style.boxShadow='0 10px 40px rgba(212, 165, 116, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
                 <div class="w3-col l3 m6">
                     <img src="15-interior-family-house-presov.jpg" style="width:100%; border-radius: 12px; transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.05);" class="w3-hover-opacity"
-                        alt="Interiér rodinný dom Prešov" title="Interiér rodinný dom Prešov" onmouseover="this.style.boxShadow='0 10px 40px rgba(255, 0, 128, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
+                        alt="Interiér rodinný dom Prešov" title="Interiér rodinný dom Prešov" onmouseover="this.style.boxShadow='0 10px 40px rgba(143, 87, 41, 0.3)'; this.style.transform='scale(1.03)'" onmouseout="this.style.boxShadow='none'; this.style.transform='scale(1)'">
                 </div>
             </div>
             
             <!-- Load More Button -->
-            <div class="w3-center" style="margin-top: 40px;">
-                <button id="loadMoreBtn" class="w3-button w3-padding-large" style="background: transparent; border: 2px solid #00d4ff; color: #00d4ff; border-radius: 30px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(135deg, #00d4ff 0%, #ff0080 100%)'; this.style.color='white'; this.style.borderColor='transparent'; this.style.boxShadow='0 4px 25px rgba(0, 212, 255, 0.4)'" onmouseout="this.style.background='transparent'; this.style.color='#00d4ff'; this.style.borderColor='#00d4ff'; this.style.boxShadow='none'" onclick="loadMoreProjects()">
+            <div class="w3-center" style="margin-top: 40px; position: relative; z-index: 1;">
+                <button id="loadMoreBtn" class="w3-button w3-padding-large" style="background: transparent; border: 2px solid #d4a574; color: #d4a574; border-radius: 30px; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(135deg, #d4a574 0%, #8f5729 100%)'; this.style.color='white'; this.style.borderColor='transparent'; this.style.boxShadow='0 4px 25px rgba(212, 165, 116, 0.4)'" onmouseout="this.style.background='transparent'; this.style.color='#d4a574'; this.style.borderColor='#d4a574'; this.style.boxShadow='none'" onclick="loadMoreProjects()">
                     <i class="fa fa-plus"></i> Načítať viac
                 </button>
             </div>
         </div>
 
         <!-- Contact Section -->
-        <div class="w3-container" style="padding:128px 16px; background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%); position: relative;" id="contact">
-            <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.3), transparent);"></div>
+        <div class="w3-container section-light" style="padding:128px 16px;" id="contact">
+            <!-- Subtle Geometric Shapes for Light Section -->
+            <div class="geometric-shapes light-section-shapes">
+                <div class="shape triangle triangle-2" style="opacity: 0.06; border-color: transparent transparent #8f5729 transparent;"></div>
+                <div class="shape triangle triangle-3" style="opacity: 0.05; border-color: transparent transparent #d4a574 transparent;"></div>
+                <div class="shape circle-outline circle-2" style="opacity: 0.07;"></div>
+                <div class="shape diamond diamond-1" style="opacity: 0.05;"></div>
+                <div class="shape dots-pattern dots-1" style="opacity: 0.04;"></div>
+            </div>
+            
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Kontaktujte nás</h3>
-                    <p>Prednosťou našej spoločnosti je profesionalita a skúsenosť nadobudnuté z projektovania a riadenia stavieb. Postaráme sa najlepšie o čo najrýchlejšie a najefektívnejšie riešenie Vašej zákazky. Samozrejmosťou je osobný prístup a vysoké pracovné nasadenie.</p>
+                    <h3 style="color: #1a1a2e;">Kontaktujte nás</h3>
+                    <p style="color: #4a4a6a;">Prednosťou našej spoločnosti je profesionalita a skúsenosť nadobudnuté z projektovania a riadenia stavieb. Postaráme sa najlepšie o čo najrýchlejšie a najefektívnejšie riešenie Vašej zákazky. Samozrejmosťou je osobný prístup a vysoké pracovné nasadenie.</p>
                     
                     <ul class="contact-details">
-                        <li>
+                        <li style="color: #1a1a2e;">
                             <i class="fa fa-map-marker"></i>
                             <div>
                                 Letná 42,<br>
@@ -1196,15 +2135,15 @@
                                 Slovenská republika
                             </div>
                         </li>
-                        <li>
+                        <li style="color: #1a1a2e;">
                             <i class="fa fa-envelope"></i>
                             <span>archvizual.studio@gmail.com</span>
                         </li>
-                        <li>
+                        <li style="color: #1a1a2e;">
                             <i class="fa fa-phone"></i>
                             <span>+421910252500</span>
                         </li>
-                        <li>
+                        <li style="color: #1a1a2e;">
                             <i class="fa fa-clock-o"></i>
                             <span>otvr. hod. 8:00 – 16:30</span>
                         </li>
@@ -1238,7 +2177,7 @@
                                     <span>Vyberte súbory alebo ich sem pretiahnite</span>
                                 </label>
                             </div>
-                            <small style="color: #a0a0b0; display: block; margin-top: 8px;">Podporované formáty: PDF, DOC, DOCX, JPG, PNG, ZIP (max 10MB)</small>
+                            <small style="color: #4a4a6a; display: block; margin-top: 8px;">Podporované formáty: PDF, DOC, DOCX, JPG, PNG, ZIP (max 10MB)</small>
                         </div>
                         <button type="submit" id="submitBtn">Odoslať</button>
                         <div id="formMessage" style="margin-top: 15px; padding: 15px; border-radius: 5px; display: none;"></div>
