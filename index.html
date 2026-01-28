@@ -1710,15 +1710,97 @@
             }
         }
         
-        /* Mobile sidebar improvements */
-        #mySidebar {
-            width: 280px;
-            max-width: 85vw;
+        /* Full-screen Mobile Menu */
+        #mobileMenu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        #mySidebar .w3-bar-item {
-            padding: 16px 20px;
-            font-size: 1em;
+        #mobileMenu.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid rgba(212, 165, 116, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: rgba(212, 165, 116, 0.1);
+            border-color: #d4a574;
+        }
+        
+        .mobile-menu-close i {
+            font-size: 24px;
+            color: #d4a574;
+        }
+        
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .mobile-menu-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: 500;
+            padding: 15px 40px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .mobile-menu-links a:hover {
+            color: #d4a574;
+            background: rgba(212, 165, 116, 0.1);
+        }
+        
+        .mobile-menu-links a.mobile-cta {
+            background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%);
+            color: white;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
+        }
+        
+        .mobile-menu-links a.mobile-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(212, 165, 116, 0.4);
+        }
+        
+        .mobile-menu-links a.mobile-app {
+            color: #d4a574;
+            border: 2px solid #d4a574;
+            background: transparent;
+        }
+        
+        .mobile-menu-links a.mobile-app:hover {
+            background: rgba(212, 165, 116, 0.1);
         }
     </style>
 </head>
@@ -1747,17 +1829,20 @@
         </div>
     </div>
 
-    <!-- Mobile Sidebar -->
-    <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large"
-        style="display:none; background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%); border-right: 1px solid rgba(212, 165, 116, 0.2);" id="mySidebar">
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16" style="color: #d4a574;">Zavrieť ×</a>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">O nás</a>
-        <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Služby</a>
-        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Projekty</a>
-        <a href="sprava-budov.html" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #e0e0e0; border-bottom: 1px solid rgba(255,255,255,0.05);">Správa budov</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button" style="background: linear-gradient(135deg, #d4a574 0%, #8f5729 100%); color: white; margin: 16px; border-radius: 25px;">Kontakt</a>
-        <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" style="color: #d4a574; border: 2px solid #d4a574; margin: 16px; border-radius: 25px; text-align: center;">App</a>
-    </nav>
+    <!-- Full-screen Mobile Menu -->
+    <div id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()">
+            <i class="fa fa-times"></i>
+        </button>
+        <div class="mobile-menu-links">
+            <a href="#about" onclick="scrollToSection('#about')">O nás</a>
+            <a href="#team" onclick="scrollToSection('#team')">Služby</a>
+            <a href="#work" onclick="scrollToSection('#work')">Projekty</a>
+            <a href="sprava-budov.html">Správa budov</a>
+            <a href="#contact" onclick="scrollToSection('#contact')" class="mobile-cta"><i class="fa fa-envelope"></i> Kontakt</a>
+            <a href="#" class="mobile-app"><i class="fa fa-mobile"></i> App</a>
+        </div>
+    </div>
 
     <!-- Header with full-height image -->
     <header class="bgimg-1 w3-display-container" id="home">
@@ -2236,36 +2321,42 @@
 
             // Mobile menu toggle
             function toggleMobileMenu() {
-                var sidebar = document.getElementById("mySidebar");
-                if (sidebar.style.display === 'block') {
-                    sidebar.style.display = 'none';
-                } else {
-                    sidebar.style.display = 'block';
-                }
+                var menu = document.getElementById("mobileMenu");
+                menu.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-
-            // Toggle between showing and hiding the sidebar when clicking the menu icon
-            var mySidebar = document.getElementById("mySidebar");
-
-            function w3_open() {
-                if (mySidebar.style.display === 'block') {
-                    mySidebar.style.display = 'none';
-                } else {
-                    mySidebar.style.display = 'block';
-                }
+            
+            function closeMobileMenu() {
+                var menu = document.getElementById("mobileMenu");
+                menu.classList.remove('active');
+                document.body.style.overflow = '';
             }
-
-            // Close the sidebar with the close button
-            function w3_close() {
-                mySidebar.style.display = "none";
-            }
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
+            
+            function scrollToSection(selector) {
+                closeMobileMenu();
+                setTimeout(function() {
+                    var target = document.querySelector(selector);
                     if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 100);
+                return false;
+            }
+
+            // Smooth scroll for anchor links (for desktop nav)
+            document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    // Skip if it's just "#" or "javascript:void(0)"
+                    if (href === '#' || href === 'javascript:void(0)') {
+                        return;
+                    }
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
                         target.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
